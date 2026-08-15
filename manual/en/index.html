@@ -171,8 +171,9 @@ screen-sharing support (Mutter ScreenCast), so there is no driver to add.</p>
 Install the Pi-specific <code>.deb</code>. Virtual displays use labwc's own support, and the
 package adds the udev rules that let the app reach the glasses over USB.</p>
 <p><strong>macOS</strong>
-<strong>Experimental.</strong> The build is off by default and there is no package; trying it
-means building from source.</p>
+<strong>Experimental.</strong> Use the current package supplied through your purchase or
+distribution channel, and check its README for supported architectures and
+signing status.</p>
 <p>From here on, using the app is the same everywhere.</p>
 <p>The app lives in the notification area. Closing its window does not quit it —
 click the tray icon to bring it back, and use the tray menu to quit.</p>
@@ -186,9 +187,9 @@ down the left.</p>
 <li><strong>Wall map</strong> — shows the wall as a small flat map (see below).</li>
 </ul>
 <p><img alt="The Spatial Wall operation panel and Glasses settings" src="manual-images/control-window-en.png" /></p>
-<p>You can go through the settings before connecting anything. The moment you plug
-the glasses in they are detected and the status changes from "not connected" to
-the model name.</p>
+<p>You can go through the settings before connecting anything. Once the connected
+glasses are detected and head tracking starts, the status changes to "3DoF
+running".</p>
 <h2 id="connecting-the-glasses">Connecting the glasses</h2>
 <p>Plug in over USB and detection is automatic. The <strong>Glasses</strong> category shows the
 detected model, the IMU path, and the glasses display.</p>
@@ -199,13 +200,11 @@ and tucks them into a corner of the desktop — a corner that touches the rest a
 a single point, so neither the cursor nor a dragged window can bleed onto the
 glasses. While cloned, the glasses and the mirrored monitor share one desktop
 source, so wall output stays off until Windows finishes giving the glasses their
-own extended source.
-On Windows, standalone can also reactivate a disabled supported-glasses target.
-The OBS build lacks the DisplayCore proof needed to do that safely, so it repairs
-an active clone only; enable a disabled display in Windows Settings first.</p>
+own extended source. On Windows, Spatial Wall can also reactivate a disabled
+supported-glasses target.</p>
 <p>As a conditional feature, when a display mode's hardware EDID contains the
 Microsoft HMD VSDB, Windows classifies the glasses as <code>HeadMounted</code> and removes
-them from the desktop. The Windows standalone app detects this automatically,
+them from the desktop. Spatial Wall detects this automatically on Windows,
 acquires the display exclusively and drives it directly. Hardware verification
 is currently limited to modified a01+ EDID slots for 2D 90Hz and SBS 72Hz; the
 app cannot turn ordinary glasses into an HMD through a setting. Extended-display
@@ -324,9 +323,9 @@ its executable name to the exclusion list (for example <code>discord.exe</code>)
 single direction.</p>
 </blockquote>
 <p><strong>Browser tabs</strong>: on Chrome or Edge 116 or later, install the "nyan Real Audio
-Wall connector" extension to place each tab's audio individually. It works with
-the OBS plug-in or standalone app on Windows, and the standalone app on Linux;
-Chrome tab capture is not yet supported on macOS. DRM media and cross-origin
+Wall connector" extension to place each tab's audio individually. It works on
+Windows and Linux. Chrome tab capture is not yet supported on macOS. DRM media
+and cross-origin
 media without CORS permission keep playing normally in the browser and are not
 spatialized. Audio generated directly with Web Audio may not be captured either.</p>
 <h2 id="controlling-it">Controlling it</h2>
@@ -410,9 +409,8 @@ apply the new language.</p>
 <p><strong>Nothing shows in the glasses, or the desktop vanished</strong>
 - In the normal desktop path, check that the display mode is not "Duplicate" or
   "Second screen only". Leaving "Force glasses to an extended display" on fixes
-  this on every connection in standalone by identifying the supported glasses'
-  physical target and repairing its disabled or cloned-source state. OBS repairs
-  an active clone, but a disabled display must first be enabled in Windows Settings.
+  this on every connection on Windows by identifying the supported glasses'
+  physical target and repairing its disabled or cloned-source state.
 - If the display stays dark after switching into an HMD-capable mode, turn off
   "Restore saved display mode on connection" and reconnect the cable. If the
   normal display still does not return, restart Windows. Do not force-quit the
