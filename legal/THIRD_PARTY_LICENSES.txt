@@ -17,7 +17,7 @@ Bundled with this application:
   License: LGPL-3.0 (open-source edition)
   Linked dynamically - the Qt6*.dll files ship next to spatial-wall.exe and
   can be replaced with a compatible build of your own. The full license text
-  is bundled as required by LGPL-3.0 section 4(d): licenses/lgpl-3.0.txt, plus
+  is bundled as required by LGPL-3.0 section 4(b): licenses/lgpl-3.0.txt, plus
   licenses/gpl-3.0.txt, which LGPL-3.0 is written as a supplement to.
 
 Vendored in this repository (compiled into this application):
