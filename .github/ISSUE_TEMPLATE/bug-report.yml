@@ -1,0 +1,70 @@
+name: 不具合・サポート / Bug report & support
+description: Spatial Wall単独版の不具合や使い方を問い合わせます / Ask about the standalone Spatial Wall app
+title: "[Support] "
+labels:
+  - support
+body:
+  - type: markdown
+    attributes:
+      value: |
+        アプリの「バージョン情報」→「問い合わせ用情報をコピー」の結果をご用意ください。
+        Please open About → Copy info for a bug report before filling in this form.
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows 11
+        - Windows 10
+        - macOS
+        - Linux / GNOME (Wayland)
+        - Raspberry Pi / labwc
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: glasses
+    attributes:
+      label: ARグラス / AR glasses
+      placeholder: 例 / Example: XREAL Air 2 Pro
+    validations:
+      required: true
+  - type: textarea
+    id: support-info
+    attributes:
+      label: 問い合わせ用情報 / Copied support information
+      description: 「問い合わせ用情報をコピー」の結果を貼り付けてください / Paste the copied block here
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 症状 / What happened
+      description: 期待した結果と、実際に起きたことを書いてください / Include both the expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順 / Steps to reproduce
+      placeholder: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ・画像 / Logs and screenshots
+      description: 必要な場合だけ添付してください。個人情報や秘密情報が含まれないことを確認してください / Attach only when useful, after checking for private or secret information
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 確認 / Confirmation
+      options:
+        - label: マニュアルの「困ったとき」を確認しました / I checked the troubleshooting section in the manual
+          required: true
+        - label: 公開してはいけない情報が含まれていないことを確認しました / I checked that this report contains no private or secret information
+          required: true
