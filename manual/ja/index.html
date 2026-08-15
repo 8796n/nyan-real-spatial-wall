@@ -71,7 +71,6 @@ footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
 }</style>
 </head>
 <body>
-<a href="../../" style="position:fixed;right:16px;bottom:16px;z-index:20;padding:9px 13px;border-radius:10px;background:#20263b;color:#f6f7fb;text-decoration:none;box-shadow:0 8px 24px #0008">Spatial Wall サポートへ戻る</a>
 <div class="wrap">
 <nav><h2>目次</h2>
 <ul>
@@ -121,7 +120,7 @@ GitHub Issues に貼る、という手動の流れです。</p>
 ROG XREAL R1、xbx a01 / a01+、RayNeo Air、Rokid（Max / Air）、
 VITURE（Pro / One / One Lite）、EPSON MOVERIO（BT-40 / BT-30C）、Nreal Light、
 MAD Gaze Glow。機種ごとにできることが違うので、詳しくは
-<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">docs/devices.md</a>
+<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">対応機種ページ</a>
 を見てください。</p>
 <p><strong>動く環境</strong>: Windows のほか、Linux と macOS でも同じアプリが動きます。</p>
 <table>
@@ -185,6 +184,7 @@ Windows の SmartScreen が警告を出すことがあります。「詳細情�
 <li><strong>センターに移動</strong> — 今向いている方向を正面として、ウォールを配置し直します。</li>
 <li><strong>ウォールマップ</strong> — ウォールを小さな平面図で表示します（後述）。</li>
 </ul>
+<p><img alt="Spatial Wall の操作パネルとメガネ設定" src="manual-images/control-window-ja.png" /></p>
 <p>メガネをまだつないでいなくても設定はひととおり触れます。つないだ瞬間に
 検出されて、状態表示が「未接続」から機種名に変わります。</p>
 <h2 id="_3">メガネをつなぐ</h2>
@@ -381,7 +381,11 @@ macOSでは承認のため「システム設定」&gt;「一般」&gt;「ログ�
   下回る構成（一部の NVIDIA ハイブリッド環境など）でだけ試してください。
   デスクトップ出力専用で、DisplayCoreを使うHMD中は無効になります。</p>
 <p><strong>外観</strong>（「外観」）
-テーマは「自動（OS に追従）」「ライト」「ダーク」から選べます。</p>
+表示言語は「自動（OSに合わせる）」が既定です。日本語または英語を明示的に
+選ぶこともできます。変更時に案内が出るので、Spatial Wall を再起動すると
+新しい言語が反映されます。</p>
+<p>テーマは「自動（OSに合わせる）」「ライト」「ダーク」から選べます。</p>
+<p><img alt="外観設定の表示言語とテーマ" src="manual-images/appearance-language-ja.png" /></p>
 <h2 id="_9">困ったとき</h2>
 <p><strong>メガネが検出されない</strong>
 - USB ケーブルが映像とデータの両方を通すものか確認してください。充電専用の
@@ -420,9 +424,12 @@ Windows / macOS 版では「カーソルを入れない」設定をオンにし�
 メガネ上のワープ表示が消えます。Spatial Wallが自動的に仮想ディスプレイをメインにしていた
 構成では、ワープを消す前にメガネなど見える物理ディスプレイへ戻します。</p>
 <p><strong>それでも解決しないとき</strong>
-「バージョン情報」の「バグ報告用の情報をコピー」を押すと、バージョン・ビルド時刻・
-接続中のメガネなどがクリップボードに入ります。これを添えて GitHub Issues へ
-報告してください。</p>
+「バージョン情報」の「問い合わせ用情報をコピー」を押すと、製品名・バージョン・
+ビルド時刻・正確な OS・接続中のメガネがクリップボードに入ります。
+<a href="https://github.com/8796n/nyan-real-spatial-wall/issues/new?template=bug-report.yml">問い合わせフォーム</a>の
+「問い合わせ用情報」欄へ貼り付け、OS と AR グラスを選んだうえで、「症状」と
+「再現手順」をそれぞれの欄へ記入してください。ログや画像を添付するときは、
+個人情報や秘密情報が含まれていないことを確認してください。</p>
 <h2 id="_10">付録</h2>
 <p><strong>OS による機能差</strong></p>
 <table>

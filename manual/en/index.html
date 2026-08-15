@@ -71,7 +71,6 @@ footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
 }</style>
 </head>
 <body>
-<a href="../../" style="position:fixed;right:16px;bottom:16px;z-index:20;padding:9px 13px;border-radius:10px;background:#20263b;color:#f6f7fb;text-decoration:none;box-shadow:0 8px 24px #0008">Back to Spatial Wall Support</a>
 <div class="wrap">
 <nav><h2>Contents</h2>
 <ul>
@@ -123,7 +122,7 @@ confined to your own network:</p>
 ROG XREAL R1, xbx a01 / a01+, RayNeo Air, Rokid (Max / Air),
 VITURE (Pro / One / One Lite), EPSON MOVERIO (BT-40 / BT-30C), Nreal Light and
 MAD Gaze Glow. What each model can do differs — see
-<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">docs/devices.md</a>
+<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">supported-glasses page</a>
 for the details.</p>
 <p><strong>Where it runs</strong>: the same app runs on Windows, Linux and macOS.</p>
 <table>
@@ -186,6 +185,7 @@ down the left.</p>
 <li><strong>Center</strong> — re-places the wall so the direction you are facing becomes forward.</li>
 <li><strong>Wall map</strong> — shows the wall as a small flat map (see below).</li>
 </ul>
+<p><img alt="The Spatial Wall operation panel and Glasses settings" src="manual-images/control-window-en.png" /></p>
 <p>You can go through the settings before connecting anything. The moment you plug
 the glasses in they are detected and the status changes from "not connected" to
 the model name.</p>
@@ -395,7 +395,11 @@ hardware validation.</p>
   falls below the panel's nominal Hz (some NVIDIA hybrid setups). It belongs to
   the desktop path and is disabled while DisplayCore drives an HMD.</p>
 <p><strong>Appearance</strong> ("Appearance")
-The theme follows the OS by default; Light and Dark can be forced.</p>
+Display language defaults to "Auto (follow OS)". You can explicitly choose
+English or Japanese. After changing it, restart Spatial Wall when prompted to
+apply the new language.</p>
+<p>The theme defaults to "Auto (follow OS)"; Light and Dark can be forced.</p>
+<p><img alt="Display language and theme in Appearance settings" src="manual-images/appearance-language-en.png" /></p>
 <h2 id="when-something-is-wrong">When something is wrong</h2>
 <p><strong>The glasses are not detected</strong>
 - Check that the USB cable carries both video and data. Charge-only cables cannot
@@ -437,8 +441,13 @@ Control+Shift+Esc turns the macOS master off and removes the warped output from
 the glasses. If Spatial Wall had automatically made a virtual display the desktop
 home, it restores a visible physical display before hiding that output.</p>
 <p><strong>Still stuck</strong>
-"About" &gt; "Copy info for a bug report" puts the version, build time and connected
-glasses on the clipboard. Attach that to a GitHub Issue.</p>
+"About" &gt; "Copy support information" puts the product, version, build time,
+exact OS and connected glasses on the clipboard. Paste it into "Copied support
+information" in the
+<a href="https://github.com/8796n/nyan-real-spatial-wall/issues/new?template=bug-report.yml">support form</a>,
+choose the OS and AR glasses, then fill in "What happened" and "Steps to
+reproduce" separately. Before attaching logs or screenshots, check that they
+contain no private or secret information.</p>
 <h2 id="appendix">Appendix</h2>
 <p><strong>What differs per OS</strong></p>
 <table>
