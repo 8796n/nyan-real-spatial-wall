@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         アプリの「バージョン情報」→「問い合わせ用情報をコピー」の結果をご用意ください。
-        Please open About → Copy info for a bug report before filling in this form.
+        Please open About → Copy support information before filling in this form.
   - type: dropdown
     id: os
     attributes:
@@ -33,7 +33,7 @@ body:
     id: support-info
     attributes:
       label: 問い合わせ用情報 / Copied support information
-      description: 「問い合わせ用情報をコピー」の結果を貼り付けてください / Paste the copied block here
+      description: 「問い合わせ用情報をコピー」の結果を編集せず貼り付けてください / Paste the copied block here unchanged
       render: text
     validations:
       required: true
