@@ -26,7 +26,7 @@ body:
     id: glasses
     attributes:
       label: ARグラス / AR glasses
-      placeholder: 例 / Example: XREAL Air 2 Pro
+      placeholder: "例 / Example: XREAL Air 2 Pro"
     validations:
       required: true
   - type: textarea
