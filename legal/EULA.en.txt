@@ -1,0 +1,186 @@
+﻿nyan Real / Spatial Wall
+END USER LICENSE AGREEMENT
+
+Last updated: 2026-08-15
+Copyright holder: 8796n <info@8796.jp>
+
+This Agreement sets out the terms on which 8796n ("the Licensor") licenses the
+software "nyan Real / Spatial Wall" ("the Software") to you ("the Customer").
+
+By installing, copying or using the Software you are deemed to have accepted
+this Agreement. If you do not accept it, do not install or use the Software.
+
+This Agreement applies to the standalone application (Spatial Wall) only. The
+separately distributed OBS Studio plugin (obs-nyan-real-3dof) is open source
+software under the GNU General Public License v2 or later and is not covered by
+this Agreement.
+
+This English text is a reference translation. The Japanese text
+(EULA.ja.txt) is the authoritative version; see Article 13.
+
+
+Article 1 (Definitions)
+
+1. "The Software" means the executable files, the bundled data files, the
+   documentation, and any updates to them supplied by the Licensor.
+
+2. "Third-party software" means software bundled with or incorporated into the
+   Software whose copyright is held by someone other than the Licensor, as
+   listed in the accompanying THIRD_PARTY_LICENSES.txt.
+
+
+Article 2 (Grant of licence)
+
+1. The Licensor grants the Customer a non-exclusive, non-transferable right to
+   use the Software in accordance with this Agreement.
+
+2. The Software is licensed, not sold. All copyright and other intellectual
+   property rights in the Software remain with the Licensor or the respective
+   rights holders.
+
+3. Each licence permits installation and use on up to two computers primarily
+   used by the Customer (for an individual, the Customer personally; for a
+   company or other organisation, one designated individual). The Software may
+   be used on only one computer at a time.
+
+4. Business and commercial use are included. No additional licence fee is
+   required.
+
+
+Article 3 (Restrictions)
+
+The Customer shall not:
+
+1. copy, transmit to the public, lend, distribute, resell, sublicense or
+   transfer the Software to any third party, except for copies permitted under
+   Article 2 and copies made for the Customer's own backup purposes;
+
+2. modify, adapt, reverse engineer, decompile or disassemble the Software.
+   This restriction does not apply where it cannot lawfully be imposed
+   (including under the mandatory provisions of the Japanese Copyright Act and
+   under Article 6 of the EU Software Directive for interoperability purposes),
+   nor to the third-party software described in Article 5;
+
+3. remove or alter any copyright or other proprietary notice;
+
+4. circumvent any technical protection measure applied to the Software;
+
+5. use the Software for any purpose contrary to law or public order.
+
+
+Article 4 (Fees, support and updates)
+
+1. Purchase terms, payment methods and refund eligibility are governed by the
+   rules of the sales channel through which the Customer purchased the
+   Software.
+
+2. The Licensor may supply updates to the Software but is under no obligation
+   to do so. The same applies to technical support.
+
+3. Unless an update is accompanied by separate terms, this Agreement applies to
+   that update as well.
+
+
+Article 5 (Third-party software)
+
+1. The Software includes third-party software. It is listed, with its licence
+   terms, in the accompanying THIRD_PARTY_LICENSES.txt and the licenses/
+   directory.
+
+2. For third-party software, the licence terms of that third party prevail over
+   this Agreement. Nothing in this Agreement restricts any right that such a
+   licence grants the Customer, including rights to copy, modify, decompile or
+   redistribute.
+
+3. The Software uses Qt under the GNU Lesser General Public License version 3
+   by dynamic linking. The Qt library files are placed alongside the executable
+   and may be replaced with a compatible build. The full texts of LGPL version
+   3 and of the GNU General Public License version 3 are included in the
+   accompanying licenses/ directory.
+
+
+Article 6 (Privacy)
+
+The Software does not communicate with any external server on the internet. It
+performs no automatic update checks and sends no usage statistics, crash
+reports, advertising traffic or analytics. Networking is used only for features
+that stay inside the Customer's own network: the phone remote, the Android
+glasses bridge, and receiving tab audio from the browser extension. See the
+accompanying manual and the published privacy notice for details.
+
+
+Article 7 (Disclaimer of warranty)
+
+1. The Software is provided AS IS. The Licensor makes no warranty of any kind,
+   express or implied, that the Software is fit for any particular purpose,
+   that it is free of errors or defects, or that it will work with any
+   particular hardware, operating system or peripheral device.
+
+2. The Licensor gives no warranty of operation on devices not listed as
+   supported, or in environments that do not meet the stated requirements.
+
+
+Article 8 (Limitation of liability)
+
+1. The Licensor's total liability to the Customer for damages shall not exceed
+   the amount the Customer actually paid for the Software.
+
+2. The Licensor is not liable for lost profits, loss of data, business
+   interruption, or any other indirect, special or consequential damages.
+
+3. The preceding two paragraphs do not apply to damages caused by the
+   Licensor's wilful misconduct or gross negligence. Where the Customer is a
+   consumer under the Japanese Consumer Contract Act and that Act or other
+   mandatory law renders all or part of those paragraphs void, the Licensor's
+   liability shall be limited to the extent permitted by law.
+
+
+Article 9 (Termination)
+
+1. If the Customer breaches this Agreement, the licence granted under it
+   terminates automatically without notice from the Licensor.
+
+2. On termination the Customer shall immediately cease using the Software and
+   delete all copies of it.
+
+3. Article 2(2), Article 7, Article 8 and Article 11 survive termination of
+   this Agreement.
+
+
+Article 10 (Export control)
+
+The Customer shall comply with the Foreign Exchange and Foreign Trade Act and
+any other applicable export control laws when using or handling the Software.
+
+
+Article 11 (Governing law and jurisdiction)
+
+1. This Agreement is governed by and construed in accordance with the laws of
+   Japan.
+
+2. Any dispute arising out of this Agreement shall be submitted to the
+   exclusive jurisdiction of the district court having jurisdiction over the
+   Licensor's place of business as the court of first instance. Where the
+   Customer is a consumer, this does not displace any jurisdiction available
+   under applicable law.
+
+
+Article 12 (Changes to this Agreement)
+
+The Licensor may change this Agreement in a new version of the Software. The
+changed Agreement applies upon installation or use of that version. The version
+already in use by the Customer remains governed by the Agreement in force
+before the change.
+
+
+Article 13 (Authoritative text)
+
+The Japanese text of this Agreement is authoritative. Versions in English or
+any other language are reference translations; in the event of a discrepancy in
+interpretation, the Japanese text prevails.
+
+
+Contact
+
+8796n <info@8796.jp>
+https://github.com/8796n/nyan-real-spatial-wall/issues

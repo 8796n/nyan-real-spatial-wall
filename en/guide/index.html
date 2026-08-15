@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Platform guide | Spatial Wall Support</title>
+  <meta name="description" content="Installation and platform-specific notes for Spatial Wall on Windows, macOS, GNOME and Raspberry Pi.">
+  <link rel="icon" href="../../assets/app-icon.png"><link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <header class="site-header"><nav class="shell nav" aria-label="Main navigation"><a class="brand" href="../"><img src="../../assets/app-icon.png" alt=""><span>Spatial Wall Support</span></a><div class="nav-links"><a href="../../manual/en/">Manual</a><a href="../../devices/">Glasses</a><a class="language" href="../../guide/" lang="ja">日本語</a></div></nav></header>
+  <main class="article">
+    <a class="back" href="../">← Support home</a>
+    <p class="eyebrow">Platform guide</p><h1>Install for your OS</h1>
+    <p class="lead">Package names can change between releases. Use the current package supplied through your purchase or distribution channel.</p>
+
+    <h2 id="windows">Windows standalone</h2>
+    <p><strong>Requirements:</strong> 64-bit Windows 10 version 2004 (build 19041) or later, plus a video-capable USB-C port or a suitable HDMI adapter.</p>
+    <ol><li>Run <code>*-windows-x64-installer.exe</code>, or extract the portable ZIP and launch <code>spatial-wall.exe</code>.</li><li>If SmartScreen appears for an unsigned package, verify where the file came from before choosing More info → Run anyway.</li><li>Connect the glasses as an extended display. “Force glasses to an extended display” can repair a disabled or duplicated display on connection.</li></ol>
+    <div class="callout warning"><p><strong>HMD-capable modes:</strong> direct output is conditional and currently limited to selected EDID/hardware combinations. If a display remains dark, disable saved-mode restoration, reconnect it, and restart Windows if necessary.</p></div>
+
+    <h2 id="macos">macOS</h2>
+    <p><strong>Requirements:</strong> macOS 14.4 or later. The macOS edition is currently experimental; check the supplied README for the supported architecture and signing status.</p>
+    <ul><li>Screen capture requires Screen Recording permission.</li><li>The cursor fence needs Input Monitoring; input injection needs Accessibility.</li><li>Restart the app after changing a permission.</li></ul>
+    <p>Control+Shift+Esc turns the master off on macOS, providing an escape from the warped output or a stranded cursor.</p>
+
+    <h2 id="gnome">Linux / GNOME</h2>
+    <p><strong>Requirements:</strong> GNOME 46 or later in a Wayland session. X11 sessions are not supported.</p>
+    <ol><li>Obtain the GNOME-specific <code>.deb</code>; it is different from the Pi package.</li><li>Install it with <code>sudo apt install ./package-name.deb</code>.</li><li>Log out and back in, then start Spatial Wall from the app menu.</li></ol>
+    <p>Virtual displays use GNOME/Mutter's built-in screen-casting facilities. Wayland does not permit a global cursor fence, forced movement of other apps' windows or interception of Print Screen.</p>
+
+    <h2 id="pi">Raspberry Pi / labwc</h2>
+    <p><strong>Requirements:</strong> Raspberry Pi OS trixie or later with labwc. Use the dedicated Pi <code>.deb</code>.</p>
+    <ol><li>Copy the Pi package to the device.</li><li>Install it with <code>sudo apt install ./package-name.deb</code>.</li><li>Restart to apply USB access and labwc integration.</li></ol>
+    <p>The Pi package includes glasses USB-power monitoring and labwc virtual-display integration. Do not install the GNOME package on the Pi.</p>
+
+    <h2>Every platform</h2>
+    <ul><li>Use a USB cable that carries both video and data.</li><li>The app performs no automatic update check, telemetry or crash reporting.</li><li>See the <a href="../../manual/en/">user manual</a> for operation and troubleshooting.</li></ul>
+  </main>
+  <footer class="site-footer"><div class="shell footer-row"><p>© 2026 8796n</p><p><a href="../../legal/PRIVACY.md">Privacy</a><a href="https://github.com/8796n/nyan-real-spatial-wall/issues/new?template=bug-report.yml">Get support</a></p></div></footer>
+</body>
+</html>

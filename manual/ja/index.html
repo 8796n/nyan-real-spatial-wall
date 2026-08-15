@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nyan Real / Spatial Wall</title>
+<!-- 生成物: tools/gen_manual.py が docs/manual.ja.md から生成する。直接編集しないこと。 -->
+<style>:root {
+	color-scheme: light dark;
+	--fg: #1c1f23; --bg: #ffffff; --muted: #5b6570; --line: #d8dee4;
+	--accent: #2d6cdf; --code-bg: #f4f6f8; --note-bg: #f0f5ff;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fg: #e6e9ee; --bg: #16191d; --muted: #9aa4b0; --line: #2c3238;
+		--accent: #7aa7ff; --code-bg: #1e2329; --note-bg: #1b2434;
+	}
+}
+* { box-sizing: border-box; }
+body {
+	margin: 0; background: var(--bg); color: var(--fg);
+	font-family: "Segoe UI", "Yu Gothic UI", "Hiragino Sans", system-ui, sans-serif;
+	font-size: 16px; line-height: 1.75;
+}
+.wrap { display: flex; align-items: flex-start; max-width: 1180px; margin: 0 auto; }
+nav {
+	position: sticky; top: 0; flex: 0 0 260px; max-height: 100vh; overflow-y: auto;
+	padding: 2rem 1rem 3rem; border-right: 1px solid var(--line); font-size: 0.9rem;
+}
+nav h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+nav ul { list-style: none; padding-left: 0.9rem; margin: 0.3rem 0; }
+nav > ul { padding-left: 0; }
+nav a { color: inherit; text-decoration: none; display: block; padding: 0.15rem 0; }
+nav a:hover { color: var(--accent); text-decoration: underline; }
+main { flex: 1 1 auto; min-width: 0; padding: 2rem 2.5rem 6rem; }
+h1 { font-size: 1.9rem; margin: 0 0 0.4rem; }
+h2 { font-size: 1.4rem; margin: 2.6rem 0 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
+h3 { font-size: 1.12rem; margin: 1.8rem 0 0.5rem; }
+h2:first-of-type { border-top: 0; }
+p, li { overflow-wrap: anywhere; }
+a { color: var(--accent); }
+code {
+	background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px;
+	font-family: "Cascadia Mono", Consolas, monospace; font-size: 0.9em;
+}
+pre { background: var(--code-bg); padding: 0.9rem 1rem; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.7rem; text-align: left; vertical-align: top; }
+th { background: var(--code-bg); }
+blockquote {
+	margin: 1.2rem 0; padding: 0.7rem 1rem; background: var(--note-bg);
+	border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0;
+}
+blockquote p { margin: 0.3rem 0; }
+img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+figcaption, .caption { color: var(--muted); font-size: 0.88rem; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
+@media (max-width: 860px) {
+	.wrap { display: block; }
+	nav { position: static; max-height: none; width: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+	main { padding: 1.5rem 1.2rem 4rem; }
+}
+@media print {
+	nav { display: none; }
+	main { padding: 0; }
+	body { font-size: 11pt; }
+	h2 { break-before: page; }
+	h2:first-of-type { break-before: avoid; }
+}</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;right:16px;bottom:16px;z-index:20;padding:9px 13px;border-radius:10px;background:#20263b;color:#f6f7fb;text-decoration:none;box-shadow:0 8px 24px #0008">Spatial Wall サポートへ戻る</a>
+<div class="wrap">
+<nav><h2>目次</h2>
+<ul>
+<li><a href="#_1">このアプリについて</a></li>
+<li><a href="#_2">インストールと最初の起動</a></li>
+<li><a href="#_3">メガネをつなぐ</a></li>
+<li><a href="#_4">ウォールを組む</a></li>
+<li><a href="#_5">仮想ディスプレイ</a></li>
+<li><a href="#_6">音</a></li>
+<li><a href="#_7">操作する</a></li>
+<li><a href="#_8">見え方と負荷の調整</a></li>
+<li><a href="#_9">困ったとき</a></li>
+<li><a href="#_10">付録</a></li>
+</ul>
+</nav>
+<main>
+<h1 id="nyan-real-spatial-wall">nyan Real / Spatial Wall ユーザーマニュアル</h1>
+<p>メガネをかけると、目の前の空間にディスプレイが並びます。頭を動かせば視界が
+動き、ディスプレイはその場に留まります。このマニュアルは、つないでから
+自分好みに整えるまでをひととおり案内します。</p>
+<p>個々の設定項目の説明は、アプリ内でその項目にマウスを重ねると出ます。
+ここではその手前にある「何のために、どういう順番で使うか」を扱います。</p>
+<h2 id="_1">このアプリについて</h2>
+<p>対応するメガネを USB でつなぐと、PC のディスプレイを<strong>ウォール</strong>として
+空間に並べ、頭の動きに合わせて描き直します。ディスプレイは実物・仮想を
+問わず並べられ、音も画面の位置から聞こえるようになります。</p>
+<p>主な機能は 2 つです。</p>
+<ul>
+<li><strong>Display Wall</strong> — 複数のディスプレイを空間に並べて表示します。<strong>OS 側の
+  ディスプレイ配置がそのままウォールになる</strong>のが基本の考え方で、普段どおり
+  OS の「画面の配置」を変えれば、空間の並びもそのとおりに変わります。1 枚に
+  <strong>集中</strong>したり、屏風のように折り曲げたり、距離を変えたりもできます。</li>
+<li><strong>Audio Wall</strong> — 再生中のアプリを自動で見つけ、そのウィンドウがある方向から
+  音が鳴るように混ぜます。アプリごとの設定は要りません。</li>
+</ul>
+<p><strong>外部とは通信しません。</strong> これはこのアプリの基本方針です。インターネット上の
+サーバーとは一切やり取りせず、更新の自動確認も、利用状況やクラッシュ情報の送信も
+しません。ネットワークを使うのは次の 2 つだけで、どちらも自分のネットワークの中で
+閉じています。</p>
+<ul>
+<li><strong>スマホリモコン / Android メガネブリッジ</strong> — 同じネットワーク上の端末との通信</li>
+<li><strong>Chrome 拡張からのタブ音声</strong> — PC の中だけのループバック（<code>127.0.0.1</code>）</li>
+</ul>
+<p>サポートも自動化していません。不具合の報告は、「バージョン情報」から情報をコピーして
+GitHub Issues に貼る、という手動の流れです。</p>
+<p><strong>対応メガネ</strong>: XREAL（One Pro / One / 1S / Air 2 Pro / Air 2 / Air）、
+ROG XREAL R1、xbx a01 / a01+、RayNeo Air、Rokid（Max / Air）、
+VITURE（Pro / One / One Lite）、EPSON MOVERIO（BT-40 / BT-30C）、Nreal Light、
+MAD Gaze Glow。機種ごとにできることが違うので、詳しくは
+<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">docs/devices.md</a>
+を見てください。</p>
+<p><strong>動く環境</strong>: Windows のほか、Linux と macOS でも同じアプリが動きます。</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>必要なもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>Windows 10 バージョン 2004（build 19041）以降の 64bit 版</td>
+</tr>
+<tr>
+<td>Linux（GNOME）</td>
+<td>GNOME 46 以降（Wayland セッション）</td>
+</tr>
+<tr>
+<td>Linux（Raspberry Pi）</td>
+<td>Raspberry Pi OS trixie 以降 + labwc</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>macOS 14.4 以降（<strong>実験的</strong>。一部の機能が未対応です）</td>
+</tr>
+</tbody>
+</table>
+<p>どの環境でも、映像出力できる USB-C ポートまたは HDMI 変換と、メガネ本体が
+要ります。ネットワーク接続は必須ではありません（スマホリモコンを使うときだけ、
+スマホと PC が同じネットワークに繋がっている必要があります）。OS ごとの機能差は
+付録の表にまとめてあります。</p>
+<h2 id="_2">インストールと最初の起動</h2>
+<p><strong>Windows</strong>
+インストーラー（<code>nyan-real-spatial-wall-*-installer.exe</code>）とポータブル ZIP の
+どちらでも動きます。ポータブル版は展開して <code>spatial-wall.exe</code> を実行するだけで、
+インストールは不要です。</p>
+<blockquote>
+<p><strong>署名について</strong>: 現在の配布物にはコード署名がないため、初回起動時に
+Windows の SmartScreen が警告を出すことがあります。「詳細情報」→
+「実行」で進めてください。</p>
+</blockquote>
+<p><strong>Linux（GNOME）</strong>
+<code>.deb</code> パッケージを <code>apt install</code> で導入します。仮想ディスプレイは GNOME の
+画面共有機能（Mutter ScreenCast）を使うので、追加のドライバーは要りません。</p>
+<p><strong>Linux（Raspberry Pi / labwc）</strong>
+専用の <code>.deb</code> を導入します。仮想ディスプレイは labwc の機能を使います。
+インストール時に udev ルールが入り、メガネへ USB でアクセスできるようになります。</p>
+<p><strong>macOS</strong>
+<strong>実験的な対応</strong>です。ビルドは既定で無効になっており、配布物もありません。
+試すにはソースからのビルドが必要です。</p>
+<p>どの環境でも、起動後の使い方はこの先で共通です。</p>
+<p>起動するとタスクトレイに常駐します。ウィンドウを閉じても終了せず、
+トレイのアイコンから再表示できます。終了はトレイアイコンのメニューから
+「終了」を選びます。</p>
+<p>最初に見えるのは、上部の操作パネルと、左側のカテゴリ一覧です。</p>
+<ul>
+<li><strong>有効</strong> — このアプリ全体のマスタースイッチです。オフにすると描画も
+  ディスプレイの操作も止まります。</li>
+<li><strong>3DoF</strong> — 頭の追従です。オフにすると、ウォールが視界に固定されます。</li>
+<li><strong>センターに移動</strong> — 今向いている方向を正面として、ウォールを配置し直します。</li>
+<li><strong>ウォールマップ</strong> — ウォールを小さな平面図で表示します（後述）。</li>
+</ul>
+<p>メガネをまだつないでいなくても設定はひととおり触れます。つないだ瞬間に
+検出されて、状態表示が「未接続」から機種名に変わります。</p>
+<h2 id="_3">メガネをつなぐ</h2>
+<p>USB でつなぐと自動で検出されます。<strong>メガネのカテゴリ</strong>に、検出した機種・
+IMU の経路・メガネのディスプレイが表示されます。</p>
+<p>通常のメガネ表示は、<strong>独立した拡張ディスプレイ</strong>である必要があります。
+複製表示や「セカンドスクリーンのみ」だと、ウォールが取り込むはずの画面が
+隠れてしまうためです。既定では自動で拡張ディスプレイに切り替え、デスクトップの
+隅へ寄せます。この隅は他のディスプレイと 1 点だけで接するので、カーソルや
+ドラッグ中のウィンドウがメガネ側へはみ出しません。複製中はメガネと相手画面が同じ
+表示元を共有するため、独立した拡張画面への切り替えが完了するまでウォール出力を開始しません。
+Windows単独版は無効化された対応メガネも再有効化します。OBS版はDisplayCoreによる同一Targetの
+安全証明を持たないため、接続中の複製解除だけを行い、無効な画面はWindowsの設定から有効にしてください。</p>
+<p>条件付き機能として、実機 EDID に Microsoft HMD VSDB を持つ表示モードでは、Windows がメガネを
+<code>HeadMounted</code> と分類してデスクトップから外します。Windows単独版はこの状態を自動検出し、
+メガネを排他取得して直接表示します。現時点の実機確認は、HMD VSDBを書き込んだa01+の
+2D 90Hz / SBS 72Hzだけです。アプリの設定から一般のメガネをHMD化する機能ではありません。
+HMD中は拡張画面の設定、隅寄せ、メガネ側の
+カーソルフェンス、フルスクリーン排他は使いません。</p>
+<p>つないだら次を確認してください。</p>
+<ol>
+<li><strong>表示モード</strong> — 2D か 3D SBS か、リフレッシュレートを選びます。
+   72Hz / 90Hz 系のモードは OLED のデューティ比も下がるため、見回したときの
+   残像が減ります。「保存した表示モードを接続時に復元」は既定でオフです。
+   オフでも手動選択は記憶され、通常モードの復元にも使えます。最後に記憶したのが
+   HMD対応モードの場合は、その切り替えが安定するPCでだけオンにしてください。</li>
+<li><strong>SBS 出力</strong> — 「自動」のままで、たいていのモードは正しく判別されます。
+   ハーフ SBS のモードだけは解像度から判別できないので、手動でオンにします。</li>
+<li><strong>明るさ / 音量</strong> — メガネ側で調整できる機種なら、ここから操作できます。
+   メガネ内蔵アンプの音量と PC 側の音量は掛け算になるので、PC 側が 100% でも
+   小さいときはメガネ側を上げてください。</li>
+</ol>
+<p><strong>タップ操作</strong>（対応機種のみ）: メガネのツルを 2 回 / 3 回叩くと、再生・一時停止や
+音量、センターに移動などを実行できます。反応が悪いときは「タップ操作」の
+カテゴリから較正してください。メガネに指示が表示されます。</p>
+<p><strong>居眠り対策</strong>: しばらく動かないとスリープに入り、画面を消します。
+動かせば戻ります。時間と感度は「省電力」で変えられます。</p>
+<h2 id="_4">ウォールを組む</h2>
+<p><strong>Display Wall</strong> のカテゴリで、どのディスプレイを並べるかと、どう並べるかを
+決めます。</p>
+<p><strong>並べるディスプレイを選ぶ</strong>
+図の中のタイルをクリックすると追加・削除、ドラッグで並べ替えです。メガネ自身の
+ディスプレイは常に除外されます（自分を映して合わせ鏡になるのを防ぐため）。
+メイン ディスプレイを含めるかどうかも選べます。</p>
+<p><strong>並べ方を決める</strong></p>
+<p><strong>レイアウト</strong>は 3 つから選びます。</p>
+<ul>
+<li><strong>Windows の配置</strong> — <strong>OS の「画面の配置」設定をそのまま使います</strong>。普段
+  使っているマルチディスプレイの配置がそのまま空間に出るので、いちばん
+  分かりやすい並び方です。OS 側で配置を変えれば、ウォールもそれに追随します。</li>
+<li><strong>列数で自動配置</strong> — 指定した列数で折り返して並べます。物理的な配置と
+  関係なく、格子状に整列させたいときに使います。</li>
+<li><strong>行レイアウト</strong> — どの行にどのディスプレイを置くかを自分で指定します。
+  ディスプレイの番号や名前の一部をカンマで区切り、行の区切りは <code>/</code> や
+  改行で表します。</li>
+</ul>
+<p>そのほかの調整です。</p>
+<ul>
+<li><strong>隙間 / 余白</strong> — ディスプレイ同士の間隔です。</li>
+<li><strong>ディスプレイの枠を表示</strong> — どこからどこまでが 1 枚かを見やすくします。</li>
+</ul>
+<p><strong>見る位置を決める</strong>
+- <strong>センターに移動</strong> — 今の向きを正面にします。基準にするディスプレイを
+  指定しておくと、そのディスプレイが正面に来ます。
+- <strong>1画面に集中</strong> — ウォールの中の 1 枚だけを表示します。作業に没入したいときに
+  使います。「なし」で全体に戻ります。
+- <strong>スクリーン距離</strong> — ウォールまでの距離です。物理サイズを保ったまま
+  動かすので、近いほど大きく見えます。0.5m より近いと目が疲れやすいので、
+  短時間の演出向けと考えてください。
+- <strong>スクリーン湾曲 / 屏風モード</strong> — ウォールを手前に湾曲させます。屏風モードを
+  オンにすると、なめらかな曲面ではなくディスプレイの継ぎ目で折れ、屏風のように
+  なります（1 枚のディスプレイの途中で折れることはありません）。</p>
+<p><strong>ウィジェット</strong>: 時計などの小さなパネルをウォールの縁に貼り付けられます。
+図の上でドラッグ・リサイズでき、辺を基準にした位置指定もできます。</p>
+<h2 id="_5">仮想ディスプレイ</h2>
+<p>物理的なディスプレイが足りなくても、<strong>仮想ディスプレイ</strong>を足せばウォールを
+広げられます。「詳細」→「仮想ディスプレイ」から追加します。</p>
+<p>Windows では専用のドライバーが要ります（<strong>nyan Real / Virtual Display Driver</strong>
+を推奨、<strong>ParsecVDisplay</strong> も使えます）。<strong>ドライバーは同梱していない</strong>ので、
+別途インストールしてください。Linux / macOS では OS 組み込みの機能を使うため、
+導入するものはありません。</p>
+<p>追加した仮想ディスプレイは、このアプリが動いている間だけ存在します。次回
+起動時には同じ一覧が復元されます。</p>
+<p><strong>待機と再開</strong>
+仮想ディスプレイはメガネ越しでしか見えないので、メガネを外している間は
+そこに置いたウィンドウが行方不明になります。<strong>待機</strong>を押すと、仮想ディスプレイを
+一時的に取り外し、載っていたウィンドウをこちらの画面へ回収します。<strong>再開</strong>で
+元の配置に戻ります。メガネを着けてマスタースイッチをオンにすると自動で再開します。</p>
+<p>macOSでは、Mac本体がスリープすると仮想ディスプレイも自動で待機し、復帰後に
+物理ディスプレイが安定するまで少し待ってから再開します。</p>
+<p>マスタースイッチを切ったときやメガネを抜いたときに<strong>自動では待機しません</strong>。
+Windows / Linuxでは見えない画面をウォールマップから操作できます。macOSでは自動アイドル中も
+開いたウォールマップを使えますが、マスターオフやメガネ抜線後の回復表示にはまだ使えません。</p>
+<p><strong>ウォールマップ</strong>
+ウォール全体を小さな平面図として表示する窓です。仮想ディスプレイもそのまま
+マウスで操作できるので、メガネを外したままでも作業を続けられます。ホイールで
+拡大縮小、ドラッグで移動、ダブルクリックで全体表示です。</p>
+<blockquote>
+<p>macOS版では、自動アイドル中も開いたウォールマップを利用できます。マスターオフや
+メガネ抜線後の回復表示にはまだ対応していません。自動アイドル中の経路も実装済みですが、
+実機確認待ちです。</p>
+<p>ウォールマップを閉じても、この窓が閉じるだけです。仮想ディスプレイの切断と復帰には
+<strong>待機</strong> / <strong>再開</strong>を使います。</p>
+</blockquote>
+<p><strong>カーソルが迷子にならないように</strong>
+Windows / macOS版では、メガネ画面と仮想ディスプレイにそれぞれ「カーソルを入れない」設定があります。
+オンにすると、カーソルはその画面を通り抜けて反対側のディスプレイへ移動します。
+メガネがHMDとしてデスクトップから外れている間は、メガネ側の設定は不要なので表示されません。
+macOSでは初回に「入力監視」の許可が必要です。GNOME・Raspberry PiではOSの入力制御が
+異なるため、この設定は表示されません。</p>
+<blockquote>
+<p><strong>ヒント</strong>: カーソルが時々隣のディスプレイの端へ飛ぶときは、Windows の
+設定 &gt; システム &gt; ディスプレイ &gt; 複数のディスプレイ &gt;
+「ディスプレイ間でカーソルを簡単に移動できるようにする」をオフにしてください。
+Windows 側の斜め移動補正と干渉しています。</p>
+</blockquote>
+<h2 id="_6">音</h2>
+<p><strong>出力先</strong>: 上部の「音声の出力先」で、PC で聞く音の行き先を選びます。
+「メガネに自動」にすると、メガネの USB オーディオを検出したときに 1 回だけ
+切り替えます。特定のデバイスを選んだ場合は、そのデバイスが未接続の間も選択を
+覚えていて、見つかり次第戻ります。</p>
+<p><strong>Audio Wall</strong>: 「Audio Wall」のカテゴリで空間音響をオンにすると、音を鳴らして
+いるアプリを自動で見つけ、そのウィンドウがある方向から聞こえるように混ぜます。
+アプリごとの設定は要りません。混ぜたくないアプリは除外リストに実行ファイル名を
+書きます（例: <code>discord.exe</code>）。</p>
+<blockquote>
+<p>音はアプリ単位で方向が決まります。1 つのアプリが複数の画面にまたがっている
+場合は、1 方向にまとまります。</p>
+</blockquote>
+<p><strong>ブラウザのタブ</strong>: Chrome / Edge 116 以降に拡張機能「nyan Real Audio Wall
+connector」を入れると、タブごとの音も空間に配置できます。Windows では OBS
+プラグイン版と単独版、Linux では単独版に対応し、macOS の Chrome タブ取り込みは
+未対応です。DRM メディアと CORS 許可のない別オリジンのメディアは、通常どおり
+ブラウザから再生され、空間化されません。Web Audio で直接生成された音声も
+取り込めない場合があります。</p>
+<h2 id="_7">操作する</h2>
+<p><strong>ショートカットキー</strong>（「リモコン操作」→「ショートカットキー」）
+センターに移動、集中の切り替え（次 / 前 / 解除）、3DoF とマスターのオン・オフを
+Windows、Raspberry Pi（labwc）、macOS ではグローバルホットキーに割り当てられ、
+他のアプリを使っている間でも効きます。macOS のマスタートグルは既定で
+Control+Shift+Esc です。GNOME 版はグローバルショートカットの登録に未対応のため、
+この設定行は表示されません。</p>
+<p><strong>スマホリモコン</strong>（「リモコン操作」）
+同じネットワーク上のスマホを、タッチパッド付きのリモコンにできます。有線 LAN の
+PC と Wi-Fi のスマホのように、経路が違っても同じネットワークなら届きます。
+表示される QR コードをスマホのカメラで読み取るだけで、アプリのインストールは
+要りません。マウス操作、センターに移動、ジャイロの再較正、スクリーン距離の変更が
+できます。</p>
+<p>QR を読めない状況（メガネが唯一のディスプレイのときなど）では、<strong>コードで
+ペアリング</strong>を使ってください。スマホのブラウザで URL を開き、表示された
+6 桁のコードを入力します。</p>
+<blockquote>
+<p>初回に有効化したとき Windows のファイアウォールが確認を出したら、
+「アクセスを許可する」を選んでください。同じネットワークの中からしか届きません。
+URL に含まれるトークンを知らない端末からの操作は拒否されます。</p>
+<p>スマホリモコン、Androidアプリのダウンロード、メガネブリッジはLAN内で
+暗号化されていないHTTP/WebSocketを使用します。共有・公衆Wi-Fiではなく、
+信頼できる私設ネットワークでのみお使いください。</p>
+</blockquote>
+<p><strong>Android メガネブリッジ</strong>（「リモコン操作」）
+メガネを PC ではなく <strong>Android スマホに挿して使う</strong>経路です。スマホ側のアプリが
+メガネの USB を持ち、映像と頭の姿勢を PC のウォールへ橋渡しします。PC の USB を
+占有しない構成にしたいときや、PC から離れて使いたいときに向きます。映像と音声を
+メガネの Presentation へ送る経路は Windows と macOS に対応しています。macOS では
+画面収録と音声収録の許可が必要です。SC-52D + XREAL Airで、Macアプリ再起動後の自動再接続、
+物理画面と2枚の仮想ディスプレイの映像表示、頭の動きへの追従を確認済みです。音声経路は
+接続まで確認済みで、実際の音声出力は未確認です。高画質モードと外部Video Input はWindows専用です。</p>
+<p>スマホのアプリが接続すると、「リモコン操作」に接続状態が表示されます。
+メガネの明るさ・表示モード・外部ディスプレイの状態や、IMU と映像チャンネルが
+つながっているかを、PC 側から確認できます。ブリッジ経由でも、機種ごとの設定は
+PC に直接つないだときと同じように扱われます。</p>
+<p><strong>Stream Deck</strong>（「詳細」→「Stream Deck」）
+「このPCからの操作を受け付ける」をオンにすると、ループバック専用
+（127.0.0.1）の制御ポートが開き、Stream Deck 用のプラグインからホットキーと
+同じ操作ができます。他の PC からは届かないので、トークンはありません。</p>
+<p><strong>ログイン時に起動</strong>（「詳細」）
+Windows版、パッケージ導入したLinux版、macOSの.appでは、ログイン時に自動起動できます。
+macOSでは承認のため「システム設定」&gt;「一般」&gt;「ログイン項目」が開くことがあります。
+ログイン起動時はコントロール窓を開かず、メニューバーに待機します。macOSの登録・承認・
+ログイン起動経路は実機確認待ちです。</p>
+<h2 id="_8">見え方と負荷の調整</h2>
+<p><strong>滑らかさ</strong>（「省電力」）
+- <strong>壁キャプチャ更新頻度</strong> — キャプチャの上限です。「自動」で足りますが、
+  負荷を下げたいときは 45Hz や Eco（30Hz）にできます。
+- <strong>フレームスキップ</strong> — 何も動いていない間の描画を省いて電力を節約します。
+  PC に余裕があるなら、オフにしたほうが動き出しが滑らかです。</p>
+<p><strong>画質</strong>（「映像エフェクト」）
+- <strong>バンディング低減（デバンド）</strong> — 暗いグラデーションに出る縞を減らします。
+- <strong>輪郭スムージング</strong> — 文字や線のちらつきを抑えます。</p>
+<p><strong>残像とちらつき</strong>（メガネ）
+- <strong>低残像 Duty</strong> — 頭を動かしている間だけ OLED のデューティ比を下げ、残像を
+  減らします（その分暗くなります）。XREAL Air / Nreal Light が対象です。
+- <strong>フルスクリーン排他</strong> — 通常は不要です。スキャンアウトが定格の Hz を
+  下回る構成（一部の NVIDIA ハイブリッド環境など）でだけ試してください。
+  デスクトップ出力専用で、DisplayCoreを使うHMD中は無効になります。</p>
+<p><strong>外観</strong>（「外観」）
+テーマは「自動（OS に追従）」「ライト」「ダーク」から選べます。</p>
+<h2 id="_9">困ったとき</h2>
+<p><strong>メガネが検出されない</strong>
+- USB ケーブルが映像とデータの両方を通すものか確認してください。充電専用の
+  ケーブルでは検出できません。
+- One 系の機種では、メガネ側の USB Ethernet / TCP-IP が有効である必要があります。
+  無効だと頭の追従が動きません（メガネ内に案内が出ます）。
+- DP オーディオモードになっていると、センサーが読めません。USB オーディオへ
+  切り替えてください。</p>
+<p><strong>メガネに何も映らない / デスクトップが消えた</strong>
+- 通常の拡張画面として使う場合は、表示が「複製」や「セカンドスクリーンのみ」に
+  なっていないか確認してください。「メガネを拡張ディスプレイに固定」をオンにすると
+  単独版では対応メガネの物理ターゲットを識別し、無効化や複製状態を接続のたびに自動で直します。
+  OBS版は接続中の複製を自動修復しますが、無効な画面はWindowsの設定から有効にしてください。
+- HMD対応モードへの切り替え後に暗いままなら、「保存した表示モードを接続時に復元」を
+  オフにし、ケーブルを抜き差ししてください。それでも通常画面へ戻らなければWindowsを
+  再起動してください。終了時に通常画面への復帰を確認している間は、アプリを強制終了しないでください。
+- HMD scanoutまでの実機確認は現在RTX 3060だけです。検証したRadeon 780M環境
+  (driver 32.0.31035.1003)ではHMD Targetが生成されませんでした。Intel UHD
+  (driver 32.0.101.7088)ではHeadMounted Targetが出るサイクルと、同じモードでもStandardのままの
+  サイクルがあり、取得・scanoutは未確認です。</p>
+<p><strong>カクつく・コマ落ちする</strong>
+- 取り込みレートを下げてみてください。
+- フレームスキップをオフにすると、動き出しが滑らかになることがあります。
+- 通常のデスクトップ出力でスキャンアウトが 60Hz に落ちている疑いがあるときだけ、フルスクリーン排他を
+  試してください。</p>
+<p><strong>音が出ない / 音の向きがおかしい</strong>
+- 「音声の出力先」がメガネになっているか確認してください。
+- Audio Wall の音はアプリ単位です。ウィンドウを目的のディスプレイへ移動すると
+  方向が変わります。
+- Windows の既定の出力デバイスは、自分に聞こえないデバイスにしておいてください
+  （アプリ自身の音が二重に鳴るのを防ぐため）。</p>
+<p><strong>カーソルが行方不明になる</strong>
+Windows / macOS 版では「カーソルを入れない」設定をオンにしてください。macOSでは初回に
+「入力監視」の許可が必要です。GNOME / Raspberry Pi、またはすでに入り込んでしまった場合は
+ウォールマップから操作できます。macOSでControl+Shift+Escを押すとマスターがオフになり、
+メガネ上のワープ表示が消えます。Spatial Wallが自動的に仮想ディスプレイをメインにしていた
+構成では、ワープを消す前にメガネなど見える物理ディスプレイへ戻します。</p>
+<p><strong>それでも解決しないとき</strong>
+「バージョン情報」の「バグ報告用の情報をコピー」を押すと、バージョン・ビルド時刻・
+接続中のメガネなどがクリップボードに入ります。これを添えて GitHub Issues へ
+報告してください。</p>
+<h2 id="_10">付録</h2>
+<p><strong>OS による機能差</strong></p>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>Windows</th>
+<th>GNOME</th>
+<th>Raspberry Pi</th>
+<th>macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display Wall / Audio Wall</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>仮想ディスプレイ</td>
+<td>ドライバーが要る</td>
+<td>OS 組み込み</td>
+<td>OS 組み込み</td>
+<td>OS 組み込み</td>
+</tr>
+<tr>
+<td>ウォールマップ</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>🟡 ワープ/自動アイドル中。マスターオフ回復未対応・実機未確認</td>
+</tr>
+<tr>
+<td>カーソルフェンス</td>
+<td>✅</td>
+<td>非対応</td>
+<td>非対応</td>
+<td>🟡 入力監視が必要・実機確認待ち</td>
+</tr>
+<tr>
+<td>タップ操作</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>未確認</td>
+</tr>
+<tr>
+<td>スマホリモコン</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>未確認</td>
+</tr>
+<tr>
+<td>グローバルホットキー</td>
+<td>✅</td>
+<td>非対応</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Android メガネブリッジ出力</td>
+<td>✅</td>
+<td>非対応</td>
+<td>非対応</td>
+<td>🟡 映像/頭追従を実機確認済み・実音声未確認</td>
+</tr>
+</tbody>
+</table>
+<p>macOS は全体が実験的な扱いです。使えない機能は、その項目自体が画面に出ません。</p>
+<p><strong>設定の保存場所</strong>
+設定とログは <code>%APPDATA%\nyan-real\</code>（Linux / macOS では各 OS のユーザー設定
+ディレクトリ）の下に保存されます。ログはアプリ内からフォルダーを開けます。</p>
+<p><strong>設定を初期化する</strong>
+「詳細」の「設定を既定値に戻す」で、すべての設定が初期状態に戻ります。
+元には戻せません。</p>
+<p><strong>バージョンの確認</strong>
+「バージョン情報」にバージョンとビルド時刻が出ます。<code>spatial-wall.exe</code> を右クリックして
+プロパティ &gt; 詳細でも読めます。</p>
+<p><strong>ライセンス</strong>
+「バージョン情報」の「使用許諾契約書を表示」で、このアプリの使用条件を読めます。
+インストーラーが最初に表示するものと同じ文書で、アプリと同じ場所に
+<code>EULA.ja.txt</code> / <code>EULA.en.txt</code> としても置いてあります。正文は日本語版です。</p>
+<p>同梱物のライセンスは「サードパーティ ライセンスを表示」から読めます。全文を
+添付する必要があるものについては、アプリと同じ場所の <code>licenses/</code> に入っています。</p>
+</main>
+</div>
+</body>
+</html>

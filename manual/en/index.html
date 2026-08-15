@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nyan Real / Spatial Wall</title>
+<!-- 生成物: tools/gen_manual.py が docs/manual.md から生成する。直接編集しないこと。 -->
+<style>:root {
+	color-scheme: light dark;
+	--fg: #1c1f23; --bg: #ffffff; --muted: #5b6570; --line: #d8dee4;
+	--accent: #2d6cdf; --code-bg: #f4f6f8; --note-bg: #f0f5ff;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fg: #e6e9ee; --bg: #16191d; --muted: #9aa4b0; --line: #2c3238;
+		--accent: #7aa7ff; --code-bg: #1e2329; --note-bg: #1b2434;
+	}
+}
+* { box-sizing: border-box; }
+body {
+	margin: 0; background: var(--bg); color: var(--fg);
+	font-family: "Segoe UI", "Yu Gothic UI", "Hiragino Sans", system-ui, sans-serif;
+	font-size: 16px; line-height: 1.75;
+}
+.wrap { display: flex; align-items: flex-start; max-width: 1180px; margin: 0 auto; }
+nav {
+	position: sticky; top: 0; flex: 0 0 260px; max-height: 100vh; overflow-y: auto;
+	padding: 2rem 1rem 3rem; border-right: 1px solid var(--line); font-size: 0.9rem;
+}
+nav h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+nav ul { list-style: none; padding-left: 0.9rem; margin: 0.3rem 0; }
+nav > ul { padding-left: 0; }
+nav a { color: inherit; text-decoration: none; display: block; padding: 0.15rem 0; }
+nav a:hover { color: var(--accent); text-decoration: underline; }
+main { flex: 1 1 auto; min-width: 0; padding: 2rem 2.5rem 6rem; }
+h1 { font-size: 1.9rem; margin: 0 0 0.4rem; }
+h2 { font-size: 1.4rem; margin: 2.6rem 0 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
+h3 { font-size: 1.12rem; margin: 1.8rem 0 0.5rem; }
+h2:first-of-type { border-top: 0; }
+p, li { overflow-wrap: anywhere; }
+a { color: var(--accent); }
+code {
+	background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px;
+	font-family: "Cascadia Mono", Consolas, monospace; font-size: 0.9em;
+}
+pre { background: var(--code-bg); padding: 0.9rem 1rem; border-radius: 8px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.7rem; text-align: left; vertical-align: top; }
+th { background: var(--code-bg); }
+blockquote {
+	margin: 1.2rem 0; padding: 0.7rem 1rem; background: var(--note-bg);
+	border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0;
+}
+blockquote p { margin: 0.3rem 0; }
+img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+figcaption, .caption { color: var(--muted); font-size: 0.88rem; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
+@media (max-width: 860px) {
+	.wrap { display: block; }
+	nav { position: static; max-height: none; width: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+	main { padding: 1.5rem 1.2rem 4rem; }
+}
+@media print {
+	nav { display: none; }
+	main { padding: 0; }
+	body { font-size: 11pt; }
+	h2 { break-before: page; }
+	h2:first-of-type { break-before: avoid; }
+}</style>
+</head>
+<body>
+<a href="../../" style="position:fixed;right:16px;bottom:16px;z-index:20;padding:9px 13px;border-radius:10px;background:#20263b;color:#f6f7fb;text-decoration:none;box-shadow:0 8px 24px #0008">Back to Spatial Wall Support</a>
+<div class="wrap">
+<nav><h2>Contents</h2>
+<ul>
+<li><a href="#about-this-app">About this app</a></li>
+<li><a href="#installing-and-first-run">Installing and first run</a></li>
+<li><a href="#connecting-the-glasses">Connecting the glasses</a></li>
+<li><a href="#building-the-wall">Building the wall</a></li>
+<li><a href="#virtual-displays">Virtual displays</a></li>
+<li><a href="#sound">Sound</a></li>
+<li><a href="#controlling-it">Controlling it</a></li>
+<li><a href="#tuning-the-picture-and-the-load">Tuning the picture and the load</a></li>
+<li><a href="#when-something-is-wrong">When something is wrong</a></li>
+<li><a href="#appendix">Appendix</a></li>
+</ul>
+</nav>
+<main>
+<h1 id="nyan-real-spatial-wall-user-manual">nyan Real / Spatial Wall User Manual</h1>
+<p>Put the glasses on and your displays are laid out in the space in front of you.
+Turn your head and the view moves; the displays stay where they are. This manual
+walks from plugging in to tuning things the way you like them.</p>
+<p>Individual settings explain themselves — hover any control in the app for its
+tooltip. This manual covers what comes before that: what each part is for, and
+in what order to use it.</p>
+<h2 id="about-this-app">About this app</h2>
+<p>Connect a supported pair of glasses over USB and your PC's displays are arranged
+in space as a <strong>wall</strong>, redrawn as you move your head. Real and virtual displays
+can both join, and sound can come from where each window sits.</p>
+<p>There are two halves.</p>
+<ul>
+<li><strong>Display Wall</strong> — lays your displays out in space. The guiding idea is that
+  <strong>your OS display arrangement becomes the wall</strong>: rearrange the screens the way
+  you always do, in the OS, and the layout in space follows. You can also
+  <strong>focus</strong> a single display, fold the wall like a folding screen, or change its
+  distance.</li>
+<li><strong>Audio Wall</strong> — finds the apps that are playing audio and mixes them so each
+  one is heard from the direction of its window. No per-app setup.</li>
+</ul>
+<p><strong>It never talks to the outside.</strong> That is a founding principle of this app: no
+server on the internet is ever contacted, no update check is made, and no usage
+or crash data is reported. It touches the network in exactly two places, both
+confined to your own network:</p>
+<ul>
+<li><strong>the phone remote and the Android glasses bridge</strong> — devices on your own network</li>
+<li><strong>tab audio from the Chrome extension</strong> — loopback inside your PC (<code>127.0.0.1</code>)</li>
+</ul>
+<p>Support is not automated either. To report a problem you copy the details from
+"About" and paste them into a GitHub Issue by hand.</p>
+<p><strong>Supported glasses</strong>: XREAL (One Pro / One / 1S / Air 2 Pro / Air 2 / Air),
+ROG XREAL R1, xbx a01 / a01+, RayNeo Air, Rokid (Max / Air),
+VITURE (Pro / One / One Lite), EPSON MOVERIO (BT-40 / BT-30C), Nreal Light and
+MAD Gaze Glow. What each model can do differs — see
+<a href="https://8796n.github.io/nyan-real-spatial-wall/devices/">docs/devices.md</a>
+for the details.</p>
+<p><strong>Where it runs</strong>: the same app runs on Windows, Linux and macOS.</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>64-bit Windows 10 version 2004 (build 19041) or later</td>
+</tr>
+<tr>
+<td>Linux (GNOME)</td>
+<td>GNOME 46 or later, Wayland session</td>
+</tr>
+<tr>
+<td>Linux (Raspberry Pi)</td>
+<td>Raspberry Pi OS trixie or later with labwc</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>macOS 14.4 or later (<strong>experimental</strong>; some features are missing)</td>
+</tr>
+</tbody>
+</table>
+<p>On any of them you also need a USB-C port that carries video (or an HDMI
+adapter) and the glasses themselves. No internet connection is required — only
+the phone remote needs a network, and only your own local one. The appendix has a
+table of what differs per OS.</p>
+<h2 id="installing-and-first-run">Installing and first run</h2>
+<p><strong>Windows</strong>
+Both the installer (<code>nyan-real-spatial-wall-*-installer.exe</code>) and the portable
+ZIP work. The portable build just needs extracting; run <code>spatial-wall.exe</code> and
+nothing is installed.</p>
+<blockquote>
+<p><strong>About code signing</strong>: the current builds are unsigned, so Windows SmartScreen
+may warn on first run. Choose "More info" then "Run anyway".</p>
+</blockquote>
+<p><strong>Linux (GNOME)</strong>
+Install the <code>.deb</code> with <code>apt install</code>. Virtual displays go through GNOME's own
+screen-sharing support (Mutter ScreenCast), so there is no driver to add.</p>
+<p><strong>Linux (Raspberry Pi / labwc)</strong>
+Install the Pi-specific <code>.deb</code>. Virtual displays use labwc's own support, and the
+package adds the udev rules that let the app reach the glasses over USB.</p>
+<p><strong>macOS</strong>
+<strong>Experimental.</strong> The build is off by default and there is no package; trying it
+means building from source.</p>
+<p>From here on, using the app is the same everywhere.</p>
+<p>The app lives in the notification area. Closing its window does not quit it —
+click the tray icon to bring it back, and use the tray menu to quit.</p>
+<p>What you see first is the operation panel across the top and the category list
+down the left.</p>
+<ul>
+<li><strong>Enabled</strong> — the master switch. Turning it off stops all rendering and display
+  management.</li>
+<li><strong>3DoF</strong> — head tracking. With it off, the wall stays locked to your view.</li>
+<li><strong>Center</strong> — re-places the wall so the direction you are facing becomes forward.</li>
+<li><strong>Wall map</strong> — shows the wall as a small flat map (see below).</li>
+</ul>
+<p>You can go through the settings before connecting anything. The moment you plug
+the glasses in they are detected and the status changes from "not connected" to
+the model name.</p>
+<h2 id="connecting-the-glasses">Connecting the glasses</h2>
+<p>Plug in over USB and detection is automatic. The <strong>Glasses</strong> category shows the
+detected model, the IMU path, and the glasses display.</p>
+<p>In the normal display path, the glasses need to be a <strong>separate extended
+display</strong>. A clone, or "second screen only", would hide the very monitors the
+wall is supposed to capture. By default the app makes them an extended display
+and tucks them into a corner of the desktop — a corner that touches the rest at
+a single point, so neither the cursor nor a dragged window can bleed onto the
+glasses. While cloned, the glasses and the mirrored monitor share one desktop
+source, so wall output stays off until Windows finishes giving the glasses their
+own extended source.
+On Windows, standalone can also reactivate a disabled supported-glasses target.
+The OBS build lacks the DisplayCore proof needed to do that safely, so it repairs
+an active clone only; enable a disabled display in Windows Settings first.</p>
+<p>As a conditional feature, when a display mode's hardware EDID contains the
+Microsoft HMD VSDB, Windows classifies the glasses as <code>HeadMounted</code> and removes
+them from the desktop. The Windows standalone app detects this automatically,
+acquires the display exclusively and drives it directly. Hardware verification
+is currently limited to modified a01+ EDID slots for 2D 90Hz and SBS 72Hz; the
+app cannot turn ordinary glasses into an HMD through a setting. Extended-display
+layout, corner tucking, the glasses cursor fence and Fullscreen Exclusive do
+not apply while this HMD path is active.</p>
+<p>Once connected, check these three.</p>
+<ol>
+<li><strong>Display mode</strong> — 2D or 3D SBS, and the refresh rate. The 72Hz and 90Hz modes
+   also lower the OLED duty cycle, which cuts motion blur when you look around.
+   "Restore saved display mode on connection" is off by default. Manual choices
+   are remembered even while it is off, and the setting also restores normal
+   modes. If the last remembered mode is HMD-capable, enable it only on a PC that
+   enters that mode reliably.</li>
+<li><strong>SBS output</strong> — "Auto" gets most modes right. Only half-SBS modes cannot be
+   told apart by resolution, so switch those on by hand.</li>
+<li><strong>Brightness and volume</strong> — available on models that expose the controls. The
+   amplifier inside the glasses and the PC's volume multiply, so if the PC is
+   already at 100% and it is still quiet, raise the glasses' own volume.</li>
+</ol>
+<p><strong>Tap controls</strong> (supported models): tap the temple twice or three times for
+play/pause, volume, centering and so on. If the response is unreliable, calibrate
+from the "Tap controls" category — the prompts appear inside the glasses.</p>
+<p><strong>Idle sleep</strong>: after a period without motion the app sleeps and blanks the
+screen; move to wake it. The timeout and sensitivity live under "Power saving".</p>
+<h2 id="building-the-wall">Building the wall</h2>
+<p>The <strong>Display Wall</strong> category decides which displays join the wall and how they
+are arranged.</p>
+<p><strong>Choosing displays</strong>
+Click a tile in the diagram to add or remove it, drag to rearrange. The glasses'
+own display is always excluded — capturing it would put the wall inside itself.
+Whether to include your main display is up to you.</p>
+<p><strong>Arranging them</strong></p>
+<p><strong>Layout</strong> offers three ways.</p>
+<ul>
+<li><strong>Windows arrangement</strong> — <strong>use the OS display arrangement as-is</strong>. Whatever
+  multi-monitor layout you already work with appears in space unchanged, which
+  makes this the most intuitive choice. Rearrange the screens in the OS and the
+  wall follows.</li>
+<li><strong>Auto columns</strong> — wrap into a grid with the number of columns you pick,
+  ignoring where the displays physically sit.</li>
+<li><strong>Rows</strong> — spell out which displays go on which row. List identify numbers or
+  parts of names separated by commas, and break rows with <code>/</code> or a newline.</li>
+</ul>
+<p>The rest is fine tuning.</p>
+<ul>
+<li><strong>Gaps and padding</strong> — the spacing between displays.</li>
+<li><strong>Show display borders</strong> — makes the edges of each display easy to see.</li>
+</ul>
+<p><strong>Setting your viewpoint</strong>
+- <strong>Center</strong> — makes the direction you are facing forward. Nominate a display and
+  that display is what ends up in front of you.
+- <strong>Focus</strong> — shows a single display from the wall, for when you want to sink
+  into one task. "None" returns to the whole wall.
+- <strong>Screen distance</strong> — how far the wall sits. Physical size is preserved, so
+  closer looks bigger. Below 0.5 m tires the eyes, so treat that as a brief
+  effect rather than a working distance.
+- <strong>Screen curve / Folding-screen mode</strong> — curves the wall towards you. In
+  folding-screen mode the curve is taken at the seams between displays instead
+  of as a smooth arc, so no single display is ever bent through its middle.</p>
+<p><strong>Widgets</strong>: small panels such as a clock can be pinned to the edges of the wall.
+Drag and resize them right in the diagram, or anchor them to an edge.</p>
+<h2 id="virtual-displays">Virtual displays</h2>
+<p>Short on physical monitors? Add <strong>virtual displays</strong> and the wall grows.
+"Advanced" &gt; "Virtual displays".</p>
+<p>On Windows this needs a driver — <strong>nyan Real / Virtual Display Driver</strong>
+(recommended) or <strong>ParsecVDisplay</strong>. <strong>Drivers are not bundled</strong>, so install one
+separately. Linux and macOS use the OS's own support and need nothing installed.</p>
+<p>Virtual displays you add exist only while this app runs, and the same list comes
+back the next time you start it.</p>
+<p><strong>Going idle and resuming</strong>
+Virtual displays are only visible through the glasses, so any window left on one
+goes missing when you take the glasses off. <strong>Go idle</strong> unplugs them temporarily
+and recalls their windows to this screen; <strong>Resume</strong> puts everything back.
+Turning the master on with the glasses present resumes automatically.</p>
+<p>On macOS, managed virtual displays also go idle when the Mac sleeps and resume
+shortly after wake, once the physical display layout has settled.</p>
+<p>Nothing goes idle <strong>automatically</strong> when you turn the master off or unplug the
+glasses. On Windows and Linux the invisible screens remain reachable through the
+wall map. On macOS an open map stays live during automatic idle sleep, but it is
+not yet a recovery display after master-off or unplugging the glasses.</p>
+<p><strong>The wall map</strong>
+A small window showing the whole wall as a flat map. The virtual displays remain
+mouse-operable there, so you can keep working with the glasses off. Wheel to
+zoom, drag to pan, double-click to fit.</p>
+<blockquote>
+<p>On macOS, an open wall map stays live during automatic idle sleep. It is not
+yet available as a recovery display after master-off or unplugging the glasses.
+The automatic-idle path is implemented but still awaits hardware validation.</p>
+<p>Closing the wall map only closes that window. Use <strong>Go idle</strong> / <strong>Resume</strong> to
+unplug and restore the virtual displays.</p>
+</blockquote>
+<p><strong>Keeping the cursor out of trouble</strong>
+On Windows and macOS, the glasses display and the virtual displays each have a
+"keep the cursor off" option. With it on, the cursor tunnels through to the
+display on the far side instead of getting stranded. The glasses option is
+hidden while the glasses are an HMD outside the desktop, where no cursor can
+enter them. macOS asks for Input Monitoring permission the first time. GNOME and
+Raspberry Pi use different input controls, so this option is not shown there.</p>
+<blockquote>
+<p><strong>Tip</strong>: if the cursor occasionally jumps to the far edge of the adjacent
+display, turn off Windows Settings &gt; System &gt; Display &gt; Multiple displays &gt;
+"Make it easier to move the cursor between displays". It interferes with the
+fence.</p>
+</blockquote>
+<h2 id="sound">Sound</h2>
+<p><strong>Output</strong>: the "Audio output" selector at the top decides where the audio you
+hear comes out. "Auto: glasses" switches to the glasses' USB audio once per
+connection. Pick a specific device and the choice is remembered while that device
+is away, then re-applied when it returns.</p>
+<p><strong>Audio Wall</strong>: turn on spatial audio in the "Audio Wall" category and the app
+finds whatever is playing, then mixes each app so it is heard from the direction
+of its window. There is no per-app setup. To keep something out of the mix, add
+its executable name to the exclusion list (for example <code>discord.exe</code>).</p>
+<blockquote>
+<p>Direction is per app. An app spread across several screens collapses to a
+single direction.</p>
+</blockquote>
+<p><strong>Browser tabs</strong>: on Chrome or Edge 116 or later, install the "nyan Real Audio
+Wall connector" extension to place each tab's audio individually. It works with
+the OBS plug-in or standalone app on Windows, and the standalone app on Linux;
+Chrome tab capture is not yet supported on macOS. DRM media and cross-origin
+media without CORS permission keep playing normally in the browser and are not
+spatialized. Audio generated directly with Web Audio may not be captured either.</p>
+<h2 id="controlling-it">Controlling it</h2>
+<p><strong>Shortcut keys</strong> ("Remote" &gt; "Shortcut keys")
+Centering, focus (next / previous / off), toggling 3DoF and the master switch can
+be bound to global hotkeys on Windows, Raspberry Pi (labwc) and macOS. They keep
+working while another app has the foreground. On macOS, the default master
+shortcut is Control+Shift+Esc. The GNOME build does not yet register
+global shortcuts, so these rows are not shown there.</p>
+<p><strong>Phone remote</strong> ("Remote")
+Turns a phone on the same network into a touchpad remote — a PC on wired Ethernet
+and a phone on Wi-Fi still reach each other, as long as it is the same network.
+Scan the QR code with the phone's camera — no app to install. From the page you get mouse control,
+centering, gyro bias recalibration and the screen distance.</p>
+<p>When the QR cannot be scanned (say the glasses are your only display), use
+<strong>Pair with code</strong>: open the URL in the phone's browser and type the 6-digit code
+shown in the app.</p>
+<blockquote>
+<p>If Windows Firewall asks on first enable, choose "Allow access". Only devices
+on your own network can reach it, and any device that does not know the token
+in the URL is rejected.</p>
+<p>The phone remote, Android app download, and glasses bridge use unencrypted
+HTTP/WebSocket on the LAN. Use them only on a trusted private network, not
+shared or public Wi-Fi.</p>
+</blockquote>
+<p><strong>Android glasses bridge</strong> ("Remote")
+A path where the glasses plug into an <strong>Android phone</strong> instead of the PC. The
+app on the phone owns the glasses' USB and bridges their video and head pose
+across to the wall on your PC — useful when you would rather not tie up a PC
+port, or want to sit away from the machine. Sending video and audio to the
+glasses Presentation is supported by Windows and macOS. On macOS this uses
+Screen Recording and Audio Recording permission. Video output and remote head
+tracking have been verified end to end on an SC-52D with XREAL Air, including
+automatic reconnection after restarting the Mac app and output from one physical
+plus two virtual displays. The audio channel connects, but audible output has
+not yet been verified. High quality mode and the external Video Input widget
+remain Windows-only.</p>
+<p>Once the phone app connects, "Remote" shows its state: the glasses' brightness,
+display mode and external display, plus whether the IMU and video channels are
+up. Model-specific settings behave the same over the bridge as they do when the
+glasses are plugged straight into the PC.</p>
+<p><strong>Stream Deck</strong> ("Advanced" &gt; "Stream Deck")
+Turning on "Accept control from this PC" opens a loopback-only (127.0.0.1)
+control port, so the Stream Deck plugin can trigger the same actions as the
+global hotkeys. It is unreachable from other machines, so there is no token.</p>
+<p><strong>Start at login</strong> ("Advanced")
+Windows, packaged Linux builds and the macOS app bundle can start with the
+desktop session. macOS may open System Settings &gt; General &gt; Login Items for
+approval. A login launch stays in the menu bar without opening the control
+window. The macOS registration, approval, and login-launch paths still await
+hardware validation.</p>
+<h2 id="tuning-the-picture-and-the-load">Tuning the picture and the load</h2>
+<p><strong>Smoothness</strong> ("Power saving")
+- <strong>Wall capture rate</strong> — the capture ceiling. "Auto" is fine; drop to 45Hz or
+  Eco (30Hz) to lighten the load.
+- <strong>Frame skip</strong> — skips rendering while nothing moves, to save power. With
+  headroom to spare, turning it off makes motion resume more smoothly.</p>
+<p><strong>Picture</strong> ("Video effects")
+- <strong>Banding reduction (deband)</strong> — cuts the banding visible in dark gradients.
+- <strong>Edge smoothing</strong> — settles the shimmer on text and thin lines.</p>
+<p><strong>Blur and flicker</strong> (Glasses)
+- <strong>Low-persistence duty</strong> — lowers the OLED duty cycle while your head is
+  moving, cutting motion blur at the cost of brightness. XREAL Air and Nreal
+  Light only.
+- <strong>Fullscreen Exclusive</strong> — normally unnecessary. Try it only where scanout
+  falls below the panel's nominal Hz (some NVIDIA hybrid setups). It belongs to
+  the desktop path and is disabled while DisplayCore drives an HMD.</p>
+<p><strong>Appearance</strong> ("Appearance")
+The theme follows the OS by default; Light and Dark can be forced.</p>
+<h2 id="when-something-is-wrong">When something is wrong</h2>
+<p><strong>The glasses are not detected</strong>
+- Check that the USB cable carries both video and data. Charge-only cables cannot
+  work.
+- On One-family models, USB Ethernet / TCP-IP must be enabled on the glasses.
+  Head tracking will not run without it (the app says so inside the glasses).
+- In DP audio mode the sensors cannot be read. Switch the glasses to USB audio.</p>
+<p><strong>Nothing shows in the glasses, or the desktop vanished</strong>
+- In the normal desktop path, check that the display mode is not "Duplicate" or
+  "Second screen only". Leaving "Force glasses to an extended display" on fixes
+  this on every connection in standalone by identifying the supported glasses'
+  physical target and repairing its disabled or cloned-source state. OBS repairs
+  an active clone, but a disabled display must first be enabled in Windows Settings.
+- If the display stays dark after switching into an HMD-capable mode, turn off
+  "Restore saved display mode on connection" and reconnect the cable. If the
+  normal display still does not return, restart Windows. Do not force-quit the
+  app while it is waiting to verify the return to the normal display path.
+- HMD scanout has currently been verified only on an RTX 3060. The tested
+  Radeon 780M system (driver 32.0.31035.1003) did not expose the HMD target.
+  Intel UHD (driver 32.0.101.7088) has exposed a HeadMounted target in one
+  cycle but kept the same target Standard in another, so acquisition and
+  scanout remain unverified there.</p>
+<p><strong>Stutter or dropped frames</strong>
+- Try a lower capture rate.
+- Turning frame skip off can smooth out the moment motion resumes.
+- Only in the normal desktop path, if you suspect scanout has dropped to 60Hz,
+  try Fullscreen Exclusive.</p>
+<p><strong>No sound, or sound from the wrong direction</strong>
+- Check that "Audio output" is pointed at the glasses.
+- Audio Wall works per app; move a window to another display and its direction
+  changes with it.
+- Keep the Windows default output device on something you cannot hear, so apps do
+  not also play outside the spatial mix.</p>
+<p><strong>The cursor gets lost</strong>
+On Windows or macOS, turn on the "keep the cursor off" options. macOS asks for
+Input Monitoring permission the first time. On GNOME / Raspberry Pi, or if the
+cursor is already stranded, the wall map lets you work on those screens.
+Control+Shift+Esc turns the macOS master off and removes the warped output from
+the glasses. If Spatial Wall had automatically made a virtual display the desktop
+home, it restores a visible physical display before hiding that output.</p>
+<p><strong>Still stuck</strong>
+"About" &gt; "Copy info for a bug report" puts the version, build time and connected
+glasses on the clipboard. Attach that to a GitHub Issue.</p>
+<h2 id="appendix">Appendix</h2>
+<p><strong>What differs per OS</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Windows</th>
+<th>GNOME</th>
+<th>Raspberry Pi</th>
+<th>macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display Wall / Audio Wall</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Virtual displays</td>
+<td>needs a driver</td>
+<td>built into the OS</td>
+<td>built into the OS</td>
+<td>built into the OS</td>
+</tr>
+<tr>
+<td>Wall map</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>🟡 warp/automatic idle; no master-off recovery; unverified</td>
+</tr>
+<tr>
+<td>Cursor fence</td>
+<td>✅</td>
+<td>Not available</td>
+<td>Not available</td>
+<td>🟡 needs Input Monitoring; unverified</td>
+</tr>
+<tr>
+<td>Tap controls</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>unverified</td>
+</tr>
+<tr>
+<td>Phone remote</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>unverified</td>
+</tr>
+<tr>
+<td>Global hotkeys</td>
+<td>✅</td>
+<td>unsupported</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Android glasses bridge output</td>
+<td>✅</td>
+<td>unsupported</td>
+<td>unsupported</td>
+<td>🟡 video/head tracking verified; audible audio pending</td>
+</tr>
+</tbody>
+</table>
+<p>macOS as a whole is experimental. Anything unavailable simply does not appear in
+the UI.</p>
+<p><strong>Where settings live</strong>
+Settings and logs are under <code>%APPDATA%\nyan-real\</code> (the platform's user config
+directory on Linux and macOS). The app can open the log folder for you.</p>
+<p><strong>Resetting</strong>
+"Advanced" &gt; "Reset settings to defaults" returns everything to its initial
+state. This cannot be undone.</p>
+<p><strong>Checking the version</strong>
+"About" shows the version and build time. Right-clicking <code>spatial-wall.exe</code> and
+opening Properties &gt; Details shows it too.</p>
+<p><strong>Licenses</strong>
+"About" &gt; "View the license agreement" opens the terms this app is licensed
+under — the same text the installer shows before it copies anything. It also
+sits next to the app as <code>EULA.ja.txt</code> / <code>EULA.en.txt</code>; the Japanese text is the
+authoritative one.</p>
+<p>"About" &gt; "View third-party licenses" lists what is bundled and under which
+license. Where a component requires its full license text to travel with the
+app, that text is in <code>licenses/</code> next to the app.</p>
+</main>
+</div>
+</body>
+</html>

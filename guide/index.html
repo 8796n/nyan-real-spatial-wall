@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OS別ガイド | Spatial Wall サポート</title>
+  <meta name="description" content="Spatial WallのWindows、macOS、GNOME、Raspberry Pi別の導入と注意点。">
+  <link rel="icon" href="../assets/app-icon.png"><link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="site-header"><nav class="shell nav" aria-label="メインナビゲーション"><a class="brand" href="../"><img src="../assets/app-icon.png" alt=""><span>Spatial Wall Support</span></a><div class="nav-links"><a href="../manual/ja/">マニュアル</a><a href="../devices/">対応機種</a><a class="language" href="../en/guide/" lang="en">English</a></div></nav></header>
+  <main class="article">
+    <a class="back" href="../">← サポートトップへ</a>
+    <p class="eyebrow">Platform guide</p><h1>OS別 導入ガイド</h1>
+    <p class="lead">配布ファイルの名称はリリースにより変わることがあります。購入時または配布時に案内された最新版を使ってください。</p>
+
+    <h2 id="windows">Windows単独版</h2>
+    <p><strong>必要環境:</strong> 64bit版 Windows 10 version 2004（build 19041）以降。映像出力できるUSB-Cポート、または対応するHDMI変換が必要です。</p>
+    <h3>インストール</h3>
+    <ol><li>インストーラー版は <code>*-windows-x64-installer.exe</code> を実行します。ポータブル版はZIPを展開し、<code>spatial-wall.exe</code> を起動します。</li><li>未署名の配布物でSmartScreenが表示された場合は、入手元が正しいことを確認してから「詳細情報」→「実行」を選びます。</li><li>メガネを通常の拡張ディスプレイとして接続します。アプリの「メガネを拡張ディスプレイに固定」をオンにすると、無効化や複製状態を接続時に修復します。</li></ol>
+    <div class="callout warning"><p><strong>HMD対応モード:</strong> 現在は対応EDIDを持つ一部構成だけの条件付き機能です。黒い画面から戻らない場合は、保存モードの自動復元をオフにして再接続し、必要ならWindowsを再起動してください。</p></div>
+
+    <h2 id="macos">macOS版</h2>
+    <p><strong>必要環境:</strong> macOS 14.4以降。macOS版全体は現在実験的です。配布時のREADMEに記載された対応アーキテクチャと署名状態も確認してください。</p>
+    <h3>初回の権限</h3>
+    <ul><li>画面の取り込みには「画面収録」の許可が必要です。</li><li>カーソルフェンスには「入力監視」、操作注入には「アクセシビリティ」の許可が必要です。</li><li>許可を変更した後はアプリを再起動してください。</li></ul>
+    <p>macOSではControl+Shift+Escでマスターをオフにできます。ウォール表示やカーソルの状態から抜けたいときの退避操作として利用できます。</p>
+
+    <h2 id="gnome">Linux / GNOME版</h2>
+    <p><strong>必要環境:</strong> GNOME 46以降のWaylandセッション。X11セッションは対象外です。</p>
+    <h3>インストール</h3>
+    <ol><li>GNOME向けの<code>.deb</code>を入手します。Pi向けパッケージとは異なります。</li><li><code>sudo apt install ./パッケージ名.deb</code>で導入します。</li><li>ログアウト/ログイン後、アプリメニューからSpatial Wallを起動します。</li></ol>
+    <p>仮想ディスプレイはGNOME/Mutterの画面共有機能を利用するため追加ドライバーは不要です。Waylandの制約により、グローバルカーソルフェンス、他アプリのウィンドウ強制移動、Print Screenキーの横取りは利用できません。</p>
+
+    <h2 id="pi">Raspberry Pi / labwc版</h2>
+    <p><strong>必要環境:</strong> Raspberry Pi OS trixie以降とlabwc。Pi向けの専用<code>.deb</code>を使います。</p>
+    <h3>インストール</h3>
+    <ol><li>Pi向け<code>.deb</code>を本体へコピーします。</li><li><code>sudo apt install ./パッケージ名.deb</code>で導入します。</li><li>インストール後に再起動し、USBアクセス規則とlabwc連携を反映します。</li></ol>
+    <p>Pi版にはメガネのUSB電源監視とlabwc向け仮想ディスプレイ設定が含まれます。GNOME向けパッケージをPiへ入れないでください。</p>
+
+    <h2>全OS共通</h2>
+    <ul><li>映像とデータの両方を通すUSBケーブルを使用してください。</li><li>アプリは自動更新、テレメトリ、クラッシュ送信を行いません。</li><li>詳しい操作とトラブル対処は<a href="../manual/ja/">ユーザーマニュアル</a>を参照してください。</li></ul>
+  </main>
+  <footer class="site-footer"><div class="shell footer-row"><p>© 2026 8796n</p><p><a href="../legal/PRIVACY.md">プライバシー</a><a href="https://github.com/8796n/nyan-real-spatial-wall/issues/new?template=bug-report.yml">問い合わせ</a></p></div></footer>
+</body>
+</html>

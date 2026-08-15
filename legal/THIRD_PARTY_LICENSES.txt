@@ -1,0 +1,51 @@
+THIRD-PARTY NOTICES - nyan Real / Spatial Wall (standalone)
+============================================================
+
+This notice covers only the standalone application (spatial-wall.exe). It is
+built from a separate CMake target than the obs-nyan-real-3dof OBS plugin in
+this repository, does not link libobs, and is not released under the OBS
+plugin's GPL-2.0-or-later license (see THIRD_PARTY_LICENSES / LICENSE, which
+describe the OBS plugin build only).
+
+The application itself is proprietary and is licensed under the End User
+License Agreement in EULA.ja.txt / EULA.en.txt. The terms below apply to the
+third-party components instead of, and in priority over, that agreement.
+
+Bundled with this application:
+- Qt 6 (Core / Gui / Widgets / Network / Qml / Quick / QuickWidgets / OpenGL)
+  https://www.qt.io/
+  License: LGPL-3.0 (open-source edition)
+  Linked dynamically - the Qt6*.dll files ship next to spatial-wall.exe and
+  can be replaced with a compatible build of your own. The full license text
+  is bundled as required by LGPL-3.0 section 4(d): licenses/lgpl-3.0.txt, plus
+  licenses/gpl-3.0.txt, which LGPL-3.0 is written as a supplement to.
+
+Vendored in this repository (compiled into this application):
+- ParsecVDisplay virtual-display driver API, Nguyen Duy (src/vendor/parsec-vdd/)
+  https://github.com/nomi-san/parsec-vdd
+  License: the upstream project's LICENSE file is MIT, but this header carries
+  its own BSD-2-Clause notice from the same author (reproduced in full at the
+  top of src/vendor/parsec-vdd/parsec-vdd.h). We honour the stricter of the two.
+  Modified from upstream: one local fix is marked inline with
+  "[nyan patch, not upstream]".
+- HIDAPI, Windows backend, Alan Ott / Signal 11 Software (src/vendor/hidapi/)
+  https://github.com/libusb/hidapi
+  License: HIDAPI is offered under a choice of licenses; this application uses
+  it under the BSD-style license (full text in src/vendor/hidapi/LICENSE-bsd.txt)
+- JSON for Modern C++ (nlohmann/json), Niels Lohmann
+  (src/core/vendor/nlohmann/json.hpp)
+  https://github.com/nlohmann/json
+  License: MIT (SPDX header in the source file)
+- QR Code generator library (C++), Project Nayuki (src/qrcodegen/)
+  https://www.nayuki.io/page/qr-code-generator-library
+  License: MIT (full text in the source file headers)
+
+Vendored for development only (NOT compiled into this application and not part
+of any release artifact; used by the unit-test executables):
+- doctest, Viktor Kirilov (src/vendor/doctest/)
+  https://github.com/doctest/doctest
+  License: MIT (full text in the source file header)
+
+Windows system libraries (D3D11, DXGI, WASAPI, HID, User32, etc.) and the
+Microsoft Visual C++ runtime are used as provided by Windows / redistributed
+under Microsoft's terms; no source from them is included in this repository.
