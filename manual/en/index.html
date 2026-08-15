@@ -233,39 +233,35 @@ screen; move to wake it. The timeout and sensitivity live under "Power saving".<
 <p>The <strong>Display Wall</strong> category decides which displays join the wall and how they
 are arranged.</p>
 <p><strong>Choosing displays</strong>
-Click a tile in the diagram to add or remove it, drag to rearrange. The glasses'
-own display is always excluded — capturing it would put the wall inside itself.
-Whether to include your main display is up to you.</p>
+The diagram shows the OS's current display arrangement. Click a tile to toggle
+whether that display belongs to the wall. Excluded tiles are dimmed, and the last
+remaining display cannot be removed. The main display works like any other tile.
+The glasses' own display never joins the wall.</p>
 <p><strong>Arranging them</strong></p>
-<p><strong>Layout</strong> offers three ways.</p>
+<p>Spatial Wall has no layout-mode selector: <strong>the OS display arrangement is the
+wall</strong>. Drag a tile in the diagram to edit that arrangement. <strong>Apply</strong> writes the
+new positions to the OS; <strong>Cancel</strong> discards the edit. Changes made in the OS's
+display settings are reflected in the wall as well.</p>
+<p><strong>Show display borders</strong> adds a thin black separator between adjacent displays.
+There are no numeric controls for display gaps or outer padding.</p>
+<p><strong>Setting your viewpoint</strong></p>
 <ul>
-<li><strong>Windows arrangement</strong> — <strong>use the OS display arrangement as-is</strong>. Whatever
-  multi-monitor layout you already work with appears in space unchanged, which
-  makes this the most intuitive choice. Rearrange the screens in the OS and the
-  wall follows.</li>
-<li><strong>Auto columns</strong> — wrap into a grid with the number of columns you pick,
-  ignoring where the displays physically sit.</li>
-<li><strong>Rows</strong> — spell out which displays go on which row. List identify numbers or
-  parts of names separated by commas, and break rows with <code>/</code> or a newline.</li>
-</ul>
-<p>The rest is fine tuning.</p>
-<ul>
-<li><strong>Gaps and padding</strong> — the spacing between displays.</li>
-<li><strong>Show display borders</strong> — makes the edges of each display easy to see.</li>
-</ul>
-<p><strong>Setting your viewpoint</strong>
-- <strong>Center</strong> — makes the direction you are facing forward. Nominate a display and
-  that display is what ends up in front of you.
-- <strong>Focus</strong> — shows a single display from the wall, for when you want to sink
-  into one task. "None" returns to the whole wall.
-- <strong>Screen distance</strong> — how far the wall sits. Physical size is preserved, so
+<li><strong>Center</strong> — makes the direction you are facing forward. Nominate a display and
+  that display is what ends up in front of you.</li>
+<li><strong>Focus</strong> — shows a single display from the wall, for when you want to sink
+  into one task. "None" returns to the whole wall.</li>
+<li><strong>Screen distance</strong> — how far the wall sits. Physical size is preserved, so
   closer looks bigger. Below 0.5 m tires the eyes, so treat that as a brief
-  effect rather than a working distance.
-- <strong>Screen curve / Folding-screen mode</strong> — curves the wall towards you. In
+  effect rather than a working distance.</li>
+<li><strong>Screen size factor</strong> — adjusts the wall's physical size independently of its
+  distance.</li>
+<li><strong>Screen curve / Folding-screen mode</strong> — curves the wall towards you. In
   folding-screen mode the curve is taken at the seams between displays instead
-  of as a smooth arc, so no single display is ever bent through its middle.</p>
-<p><strong>Widgets</strong>: small panels such as a clock can be pinned to the edges of the wall.
-Drag and resize them right in the diagram, or anchor them to an edge.</p>
+  of as a smooth arc, so no single display is ever bent through its middle.</li>
+</ul>
+<p><strong>Widgets</strong>: use <strong>Add widget</strong> to pin a small panel such as a clock to an edge of
+the wall. Click its tile to show or hide it, drag to move it, drag its lower-right
+corner to resize it, and right-click to open its settings.</p>
 <h2 id="virtual-displays">Virtual displays</h2>
 <p>Short on physical monitors? Add <strong>virtual displays</strong> and the wall grows.
 "Advanced" &gt; "Virtual displays".</p>
