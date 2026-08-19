@@ -39,7 +39,7 @@ machine, your local network, or the direct device link to the glasses:
 | Android glasses bridge | the companion app on your Android device, on your local network | video frames, audio, head-tracking and control messages |
 | Browser extension (tab audio) | loopback on the same PC (`ws://127.0.0.1`) | tab audio and window position |
 | Local control (Stream Deck or scripts) | loopback on the same PC (`ws://127.0.0.1`) | control commands and app state |
-| XREAL One-family device link | the glasses over USB Ethernet / TCP | head-tracking and device-control messages |
+| XREAL One-family device link | the glasses over TCP/IP through USB Ethernet | head-tracking and device-control messages |
 
 To let a phone find the PC by name, the app answers multicast DNS (mDNS) queries
 on the local network. That response contains the PC's host name and the port
@@ -128,7 +128,7 @@ https://github.com/8796n/nyan-real-spatial-wall/issues
 | Android メガネブリッジ | 同じネットワーク上の Android 端末のアプリ | 映像フレーム、音声、頭の動き、操作メッセージ |
 | ブラウザ拡張（タブ音声） | 同じ PC 内のループバック（`ws://127.0.0.1`） | タブの音声とウィンドウ位置 |
 | ローカル操作（Stream Deck / スクリプト） | 同じ PC 内のループバック（`ws://127.0.0.1`） | 操作コマンドとアプリの状態 |
-| XREAL One 系との接続 | USB Ethernet / TCP で直接接続したメガネ | 頭の動きと機器制御のメッセージ |
+| XREAL One 系との接続 | USB Ethernet 経由の TCP/IP で直接接続したメガネ | 頭の動きと機器制御のメッセージ |
 
 スマートフォンから PC を名前で見つけられるようにするため、本アプリは
 ローカルネットワーク上の mDNS 問い合わせに応答します。応答に含まれるのは
