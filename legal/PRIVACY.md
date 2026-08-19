@@ -1,11 +1,11 @@
-# Privacy Notice — nyan Real / Spatial Wall (standalone app)
+# Privacy Notice — nyan Real / Spatial Wall
 
-**Last updated: 2026-08-15**
+**Last updated: 2026-08-19**
 
-This is the privacy notice for the **standalone nyan Real / Spatial Wall
-application** (`spatial-wall.exe` on Windows, `spatial-wall` on Linux and
-macOS). It does not cover the OBS Studio plugin, nor the browser extension —
-the extension has its own policy in [browser extension privacy notice](https://github.com/8796n/obs-nyan-real-3dof/blob/main/PRIVACY.md).
+This is the privacy notice for the **nyan Real / Spatial Wall application**
+(`spatial-wall.exe` on Windows, `spatial-wall` on Linux and macOS). It does not
+cover the browser extension, which has its own policy in the
+[browser extension privacy notice](https://github.com/8796n/obs-nyan-real-3dof/blob/main/PRIVACY.md).
 
 ---
 
@@ -13,8 +13,8 @@ the extension has its own policy in [browser extension privacy notice](https://g
 
 ### Summary
 
-**The app never talks to the outside.** It contacts no server on the internet,
-makes no update check, and reports no usage or crash data. Everything it
+**The app contacts no server on the internet.** It makes no update check and
+reports no usage or crash data. Everything it
 processes — screen images, audio, head tracking — stays on your own computer or
 inside your own network.
 
@@ -30,14 +30,16 @@ is sent for you.
 
 ### Where the network is used
 
-Networking is used in exactly three places, all confined to your own machine or
-your own local network:
+Networking is limited to the following local paths. Each stays on your own
+machine, your local network, or the direct device link to the glasses:
 
 | Feature | Destination | What travels |
 |---|---|---|
 | Phone remote | a browser on a device on your local network | the remote-control page and the app's control state |
 | Android glasses bridge | the companion app on your Android device, on your local network | video frames, audio, head-tracking and control messages |
 | Browser extension (tab audio) | loopback on the same PC (`ws://127.0.0.1`) | tab audio and window position |
+| Local control (Stream Deck or scripts) | loopback on the same PC (`ws://127.0.0.1`) | control commands and app state |
+| XREAL One-family device link | the glasses over USB Ethernet / TCP | head-tracking and device-control messages |
 
 To let a phone find the PC by name, the app answers multicast DNS (mDNS) queries
 on the local network. That response contains the PC's host name and the port
@@ -100,8 +102,8 @@ https://github.com/8796n/nyan-real-spatial-wall/issues
 
 ### 要約
 
-**外部とは通信しません。** インターネット上のサーバーとは一切やり取りせず、
-更新の自動確認も、利用状況やクラッシュ情報の送信も行いません。処理する
+**インターネット上の外部サーバーとは通信しません。** 更新の自動確認も、
+利用状況やクラッシュ情報の送信も行いません。処理する
 情報（画面の映像、音声、頭の動き）は、お使いのコンピューターの中か、
 ご自身のネットワークの中で完結します。
 
@@ -117,14 +119,16 @@ https://github.com/8796n/nyan-real-spatial-wall/issues
 
 ### ネットワークを使う箇所
 
-ネットワークを使うのは次の 3 か所だけで、いずれもお使いのマシンの中、
-またはご自身のローカルネットワークの中で閉じています。
+ネットワーク通信は次のローカル経路に限られます。いずれもお使いのマシン、
+ご自身のローカルネットワーク、またはメガネとの直接接続の中で閉じています。
 
 | 機能 | 通信先 | 流れるもの |
 |---|---|---|
 | スマホリモコン | 同じネットワーク上の端末のブラウザ | リモコン画面と、アプリの操作状態 |
 | Android メガネブリッジ | 同じネットワーク上の Android 端末のアプリ | 映像フレーム、音声、頭の動き、操作メッセージ |
 | ブラウザ拡張（タブ音声） | 同じ PC 内のループバック（`ws://127.0.0.1`） | タブの音声とウィンドウ位置 |
+| ローカル操作（Stream Deck / スクリプト） | 同じ PC 内のループバック（`ws://127.0.0.1`） | 操作コマンドとアプリの状態 |
+| XREAL One 系との接続 | USB Ethernet / TCP で直接接続したメガネ | 頭の動きと機器制御のメッセージ |
 
 スマートフォンから PC を名前で見つけられるようにするため、本アプリは
 ローカルネットワーク上の mDNS 問い合わせに応答します。応答に含まれるのは
@@ -134,8 +138,8 @@ PC のホスト名とポート番号で、ネットワークの外には出ま�
 到達できます。信頼できるネットワークでお使いいただき、使わないときは
 オフにしてください。
 
-スマホリモコン、companion APKのダウンロード、Androidブリッジは、その
-ネットワーク内で暗号化されていないHTTP/WebSocketを使用します。共有・公衆Wi-Fi
+スマホリモコン、連携用 APK のダウンロード、Android ブリッジは、その
+ネットワーク内で暗号化されていない HTTP / WebSocket を使用します。共有・公衆 Wi-Fi
 ではなく、信頼できる私設ネットワークでのみお使いください。
 
 ### 取り込む情報と、その行き先
