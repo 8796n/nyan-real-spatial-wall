@@ -168,7 +168,7 @@ and sends no usage or crash data. Network communication is limited to these
 local paths:</p>
 <ul>
 <li><strong>Phone remote and Android glasses bridge</strong> — devices on the same LAN</li>
-<li><strong>XREAL One-family device link</strong> — direct communication with the glasses over USB Ethernet / TCP</li>
+<li><strong>XREAL One-family device link</strong> — direct communication with the glasses over TCP/IP through USB Ethernet</li>
 <li><strong>Tab audio from the Chrome extension</strong> — loopback on the same PC (<code>127.0.0.1</code>)</li>
 <li><strong>Local control from Stream Deck and similar tools</strong> — loopback on the same PC (<code>127.0.0.1</code>)</li>
 </ul>
@@ -261,12 +261,12 @@ own extended source. On Windows, Spatial Wall can also reactivate a disabled
 supported-glasses target.</p>
 <p>As a conditional feature, when a display mode's hardware EDID contains the
 Microsoft HMD VSDB, Windows classifies the glasses as <code>HeadMounted</code> and removes
-them from the desktop. Spatial Wall detects this automatically on Windows,
-acquires the display exclusively and drives it directly. Hardware verification
-is currently limited to modified a01+ EDID slots for 2D 90 Hz and SBS 72 Hz; the
-app cannot turn ordinary glasses into an HMD through a setting. Extended-display
-layout, corner tucking, the glasses cursor fence and Fullscreen Exclusive do
-not apply while this HMD path is active.</p>
+them from the desktop. Spatial Wall detects this state automatically, acquires
+the display exclusively, and drives it directly. It cannot turn ordinary
+glasses into an HMD through a setting. Extended-display layout, corner tucking,
+the glasses cursor fence, and Fullscreen Exclusive do not apply while this HMD
+path is active. See "Tested configurations and known limitations" in the
+appendix for eligibility and tested hardware.</p>
 <p>Once connected, check these three.</p>
 <ol>
 <li><strong>Display mode</strong> — 2D or 3D SBS, and the refresh rate. The 72 Hz and 90 Hz modes
@@ -338,8 +338,9 @@ displays. <strong>Resume</strong> restores the previous virtual-display configur
 Turning the master on with the glasses present resumes automatically.</p>
 <p>On macOS, managed virtual displays also go idle when the Mac sleeps and resume
 shortly after wake, once the physical display layout has settled.</p>
-<p>Nothing goes idle <strong>automatically</strong> when you turn the master off or unplug the
-glasses. On every OS the invisible screens remain reachable through the wall map.</p>
+<p>Nothing goes idle <strong>automatically</strong> when you turn the master switch off or
+disconnect the glasses. On every OS the invisible screens remain reachable
+through the wall map.</p>
 <h3 id="the-wall-map">The wall map</h3>
 <p>A small window showing the whole wall as a flat map. The virtual displays remain
 mouse-operable there, so you can keep working with the glasses off. Wheel to
@@ -407,14 +408,14 @@ HTTP/WebSocket on the LAN. Use them only on a trusted private network, not
 shared or public Wi-Fi.</p>
 </blockquote>
 <h3 id="android-glasses-bridge-remote">Android glasses bridge ("Remote")</h3>
-<p>A path where the glasses plug into an <strong>Android phone</strong> instead of the PC. The
-app on the phone owns the glasses' USB and bridges their video and head pose
-across to the wall on your PC — useful when you would rather not tie up a PC
-port, or want to sit away from the machine. Sending video and audio to the
-glasses Presentation is supported by Windows and macOS. On macOS this uses
-Screen Recording and Audio Recording permission. The appendix lists the tested
-configuration and known limitations. High quality mode and the external Video
-Input widget remain Windows-only.</p>
+<p>A way to connect the glasses to an <strong>Android phone</strong> instead of the PC. The app
+on the phone handles the USB connection and relays video and head orientation
+to the wall on your PC. This is useful when you would rather not tie up a PC
+port or want to sit away from the machine. Windows and macOS can send video and
+audio by treating the glasses as an Android external display (Presentation).
+On macOS this uses Screen Recording and Audio Recording permission. The appendix
+lists the tested configuration and known limitations. High quality mode and the
+external Video Input widget remain Windows-only.</p>
 <p>Once the phone app connects, "Remote" shows its state: the glasses' brightness,
 display mode and external display, plus whether the IMU and video channels are
 up. Model-specific settings behave the same over the bridge as they do when the
@@ -461,7 +462,7 @@ apply the new language.</p>
 <ul>
 <li>Check that the USB cable carries both video and data. Charge-only cables cannot
   work.</li>
-<li>On One-family models, USB Ethernet / TCP/IP must be enabled on the glasses.
+<li>On XREAL One-family models, USB Ethernet / TCP/IP must be enabled on the glasses.
   3DoF will not work without it (the app says so inside the glasses).</li>
 <li>In DP audio mode the app cannot acquire sensor data. Switch the glasses to USB audio.</li>
 </ul>
@@ -490,16 +491,18 @@ apply the new language.</p>
 <li>Check that "Audio output" is pointed at the glasses.</li>
 <li>Audio Wall works per app; move a window to another display and its direction
   changes with it.</li>
-<li>Keep the Windows default output device on something you cannot hear, so apps do
-  not also play outside the spatial mix.</li>
+<li>When using Audio Wall, set the Windows default output to a device you do not
+  use for listening. If both the default output and Spatial Wall output are
+  audible, you will hear the sound twice.</li>
 </ul>
 <h3 id="the-cursor-gets-lost">The cursor gets lost</h3>
-<p>On Windows or macOS, turn on the "keep the cursor off" options. macOS asks for
-Input Monitoring permission the first time. On GNOME / Raspberry Pi, or if the
-cursor is already stranded, the wall map lets you work on those screens.
-<code>Control</code> + <code>Shift</code> + <code>Esc</code> turns the macOS master switch off and removes the warped output from
-the glasses. If Spatial Wall had automatically made a virtual display the desktop
-home, it restores a visible physical display before hiding that output.</p>
+<p>On Windows and macOS, turn on the "keep the cursor off" options. macOS asks for
+Input Monitoring permission the first time. On GNOME, Raspberry Pi, or when the
+cursor has already moved to an invisible display, use the wall map to control it.</p>
+<p>On macOS, <code>Control</code> + <code>Shift</code> + <code>Esc</code> turns the master switch off and removes
+Spatial Wall from the glasses. If a virtual display managed by Spatial Wall is
+the main display, the app first moves the main-display role to a visible physical
+display.</p>
 <h3 id="still-stuck">Still stuck</h3>
 <p>"About" &gt; "Copy support information" puts the product, version, build time,
 the OS name and version, and connected glasses on the clipboard. Paste it into "Copied support
@@ -532,52 +535,52 @@ contain no private or secret information.</p>
 </tr>
 <tr>
 <td>Virtual displays</td>
-<td>needs a driver</td>
-<td>built into the OS</td>
-<td>built into the OS</td>
-<td>built into the OS</td>
+<td>✅ separate driver required</td>
+<td>✅ built into the OS</td>
+<td>✅ built into the OS</td>
+<td>✅ built into the OS</td>
 </tr>
 <tr>
 <td>Wall map</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
-<td>✅ also while master is off or unplugged</td>
+<td>✅ available with the master switch off or the glasses disconnected</td>
 </tr>
 <tr>
 <td>Cursor fence</td>
 <td>✅</td>
-<td>Not available</td>
-<td>Not available</td>
-<td>✅ needs the Input Monitoring permission</td>
+<td>—</td>
+<td>—</td>
+<td>✅ requires Input Monitoring permission</td>
 </tr>
 <tr>
 <td>Tap controls</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
-<td>✅ needs the Accessibility permission</td>
+<td>✅ requires Accessibility permission</td>
 </tr>
 <tr>
 <td>Phone remote</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
-<td>✅ needs the Accessibility permission</td>
+<td>✅ requires Accessibility permission</td>
 </tr>
 <tr>
 <td>Global hotkeys</td>
 <td>✅</td>
-<td>unsupported</td>
+<td>—</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
 <tr>
 <td>Android glasses bridge output</td>
 <td>✅</td>
-<td>unsupported</td>
-<td>unsupported</td>
-<td>🟡 video, head tracking and audio verified</td>
+<td>—</td>
+<td>—</td>
+<td>🟡 video, 3DoF, and audio verified on Intel Mac; Apple Silicon unverified</td>
 </tr>
 </tbody>
 </table>
@@ -596,19 +599,19 @@ the UI.</p>
 <tbody>
 <tr>
 <td>Windows direct HMD output</td>
-<td>Windows 11 Pro build 26200 / RTX 3060 / xbx a01+ with an HMD VSDB. Acquisition and scanout verified at 2D 90 Hz and 3D SBS 72 Hz.</td>
+<td>Windows 11 Pro (build 26200) / RTX 3060 / xbx a01+ with an HMD VSDB. Acquisition and scanout verified at 2D 90 Hz and 3D SBS 72 Hz.</td>
 <td>Only display modes with a Microsoft HMD VSDB are eligible. A Radeon 780M system (driver 32.0.31035.1003) did not expose an HMD Target. Intel UHD (driver 32.0.101.7088) was not stable in its classification; acquisition and scanout remain unverified.</td>
 </tr>
 <tr>
 <td>macOS Android glasses bridge</td>
-<td>Intel Mac / macOS 15.7 / SC-52D / XREAL Air. Video from one physical and two virtual displays, 3DoF, audio, and automatic reconnection after restarting the Mac app were verified.</td>
+<td>Intel Mac / macOS 15.7 / SC-52D / XREAL Air. Video from one physical and two virtual displays, 3DoF, audio, and automatic reconnection after restarting Spatial Wall were verified.</td>
 <td>Apple Silicon is unverified. High quality mode and external Video Input are Windows-only.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="where-settings-live">Where settings live</h3>
 <p>Settings and logs are under <code>%APPDATA%\nyan-real\</code> (the platform's user config
-directory on Linux and macOS). The app can open the log folder for you.</p>
+directory on Linux and macOS). You can open the log-storage folder from the app.</p>
 <h3 id="resetting">Resetting</h3>
 <p>"Advanced" &gt; "Reset settings to defaults" returns everything to its initial
 state. This cannot be undone.</p>
