@@ -64,7 +64,7 @@ body > main { flex: 1; }
 
 .brand img { width: 36px; height: 36px; border-radius: 10px; }
 
-.nav-links { display: flex; align-items: center; gap: 20px; margin-left: auto; }
+.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-left: auto; }
 .nav-links a, .language, .footer-links a {
   display: inline-flex;
   align-items: center;
