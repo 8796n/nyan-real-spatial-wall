@@ -10,7 +10,7 @@ nyan Real製品の公式サポートサイトです。
 
 ## VR Bridge
 
-**nyan Real / VR Bridge** は、対応ARグラスをSteamVR用のヘッドセットとして使うWindows向けソフトウェアです。現在開発中で、無料の試験版を準備しています。
+**nyan Real / VR Bridge** は、対応メガネをSteamVR用のヘッドセットとして使うWindows向けソフトウェアです。現在開発中で、無料の試験版を準備しています。
 
 - [日本語の製品情報](https://support.nyanreal.jp/vr-bridge/)
 - [English product information](https://support.nyanreal.jp/vr-bridge/en/)
@@ -31,6 +31,6 @@ nyan Real製品の公式サポートサイトです。
 
 This repository hosts the official support site for nyan Real products. It contains support material, not the product source code.
 
-**nyan Real / VR Bridge** is Windows software for using supported AR glasses as a SteamVR headset. It is currently in development, with a free test release being prepared. See the [English product page](https://support.nyanreal.jp/vr-bridge/en/) for its scope and limitations.
+**nyan Real / VR Bridge** is Windows software for using supported glasses as a SteamVR headset. It is currently in development, with a free test release being prepared. See the [English product page](https://support.nyanreal.jp/vr-bridge/en/) for its scope and limitations.
 
 Before opening a Spatial Wall issue, choose About → Copy support information and paste the unchanged block into the [support form](https://github.com/8796n/nyan-real-support/issues/new?template=spatial-wall.yml). Spatial Wall is paid, closed-source software; see the [English EULA](spatial-wall/legal/EULA.en.txt) and the authoritative [Japanese EULA](spatial-wall/legal/EULA.ja.txt).
