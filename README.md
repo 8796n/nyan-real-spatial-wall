@@ -27,6 +27,16 @@ nyan Real製品の公式サポートサイトです。
 
 このリポジトリはサポート資料を公開するためのもので、製品本体のソースコードは含みません。Spatial Wallは有償のクローズドソースソフトウェアです。使用条件は[使用許諾契約書（日本語・正文）](spatial-wall/legal/EULA.ja.txt)および[英語版](spatial-wall/legal/EULA.en.txt)を参照してください。
 
+## ページの編集
+
+マニュアル（`spatial-wall/manual/`）と法務文書（`spatial-wall/legal/`）以外のページは生成物です。
+直接編集せず、`src/pages/`の本文を直してから`python tools/build_pages.py`を実行し、
+生成されたHTMLも一緒にコミットします。ヘッダー・ナビ・フッターは`src/layout.html`、
+製品の並びとトップの製品カードは`src/products.json`が正本です。CSSのキャッシュ版数は自動で更新されます。
+
+製品を追加するときは、`src/products.json`へ1件足し、既存製品をまねて
+`src/pages/<key>/index.html`と`src/pages/<key>/en/index.html`を作ります。
+
 ## English
 
 This repository hosts the official support site for nyan Real products. It contains support material, not the product source code.

@@ -1,0 +1,61 @@
+[
+  {
+    "key": "spatial-wall",
+    "nav": "Spatial Wall",
+    "title": "Spatial Wall",
+    "tag": {"ja": "Windows · macOS · Linux", "en": "Windows · macOS · Linux"},
+    "summary": {
+      "ja": "対応メガネで複数のディスプレイを空間ウォールとして見渡すアプリ。",
+      "en": "View multiple displays as a head-tracked spatial wall through supported glasses."
+    },
+    "footer": {
+      "ja": [
+        ["マニュアル", "spatial-wall/manual/ja/"],
+        ["OS別ガイド", "spatial-wall/guide/"],
+        ["対応メガネ", "spatial-wall/devices/"],
+        ["問い合わせ", "https://github.com/8796n/nyan-real-support/issues/new?template=spatial-wall.yml"],
+        ["プライバシー", "spatial-wall/legal/PRIVACY.md"],
+        ["使用許諾契約", "spatial-wall/legal/EULA.ja.txt"]
+      ],
+      "en": [
+        ["Manual", "spatial-wall/manual/en/"],
+        ["Platform guide", "spatial-wall/en/guide/"],
+        ["Glasses", "spatial-wall/devices/"],
+        ["Get support", "https://github.com/8796n/nyan-real-support/issues/new?template=spatial-wall.yml"],
+        ["Privacy", "spatial-wall/legal/PRIVACY.md"],
+        ["EULA", "spatial-wall/legal/EULA.en.txt"]
+      ]
+    }
+  },
+  {
+    "key": "media-player",
+    "nav": "Media Player",
+    "title": "Media Player",
+    "tag": {"ja": "開発中", "en": "In development"},
+    "summary": {
+      "ja": "動画やBlu-ray 3Dを対応メガネ・3Dディスプレイで楽しむメディアプレイヤー。",
+      "en": "Enjoy video and Blu-ray 3D on supported glasses and 3D displays."
+    }
+  },
+  {
+    "key": "vdd",
+    "nav": "VDD",
+    "title": "Virtual Display Driver",
+    "tag": {"ja": "Windows 11 24H2以降", "en": "Windows 11 24H2+"},
+    "summary": {
+      "ja": "Windowsへ仮想ディスプレイを追加するドライバー。",
+      "en": "Add scriptable virtual displays to Windows."
+    },
+    "repo": "https://github.com/8796n/nyan-real-vdd"
+  },
+  {
+    "key": "vr-bridge",
+    "nav": "VR Bridge",
+    "title": "VR Bridge",
+    "tag": {"ja": "Windows · 開発中", "en": "Windows · In development"},
+    "summary": {
+      "ja": "対応メガネをSteamVR用のヘッドセットとして使うソフトウェア。",
+      "en": "Use supported glasses as a SteamVR headset."
+    }
+  }
+]
