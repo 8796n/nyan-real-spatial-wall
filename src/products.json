@@ -57,5 +57,19 @@
       "ja": "対応メガネをSteamVR用のヘッドセットとして使うソフトウェア。",
       "en": "Use supported glasses as a SteamVR headset."
     }
+  },
+  {
+    "key": "key-studio",
+    "nav": "Key Studio",
+    "title": "Key Studio",
+    "tag": {"ja": "Chrome / Edge · USB", "en": "Chrome / Edge · USB"},
+    "summary": {
+      "ja": "キーボードやフットスイッチの割り当てをUSB接続で変更するブラウザー用設定ツール。",
+      "en": "Configure keyboard and foot switch assignments in your browser over USB."
+    },
+    "footer": {
+      "ja": [["Key Studioを開く", "https://key.nyanreal.jp/"]],
+      "en": [["Open Key Studio (Japanese)", "https://key.nyanreal.jp/"]]
+    }
   }
 ]

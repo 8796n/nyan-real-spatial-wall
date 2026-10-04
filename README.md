@@ -7,6 +7,7 @@ nyan Real製品の公式サポートサイトです。
 - [Media Player](https://support.nyanreal.jp/media-player/)
 - [Virtual Display Driver](https://support.nyanreal.jp/vdd/)
 - [VR Bridge](https://support.nyanreal.jp/vr-bridge/)（開発中）
+- [Key Studio](https://support.nyanreal.jp/key-studio/)（ブラウザー用設定ツール）
 
 ## VR Bridge
 
