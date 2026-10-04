@@ -151,6 +151,9 @@ h3 { margin: 0 0 8px; font-size: 1.2rem; }
   border-radius: 18px;
 }
 
+.key-studio-visual { margin-top: 28px; }
+.product-card-image { display: block; width: 100%; height: auto; margin-bottom: 18px; border: 1px solid var(--line); border-radius: 12px; }
+
 .support-hero {
   display: grid;
   grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr);

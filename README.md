@@ -37,6 +37,9 @@ nyan Real製品の公式サポートサイトです。
 
 製品を追加するときは、`src/products.json`へ1件足し、既存製品をまねて
 `src/pages/<key>/index.html`と`src/pages/<key>/en/index.html`を作ります。
+製品カードに画像を表示する場合は、製品データの`image`にサイト内の画像パスを指定します。カード画像は1200 × 630で用意します。
+
+Key Studioの画像は、既存の製品写真・ロゴを使ったメインビジュアルの暗い配色版です。`assets/key-studio-hero.webp`を製品一覧と日英の紹介ページで使い、`assets/key-studio-ogp.jpg`を紹介ページの共有画像に指定しています。
 
 ## English
 

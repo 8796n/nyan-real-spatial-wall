@@ -60,6 +60,7 @@
   },
   {
     "key": "key-studio",
+    "image": "assets/key-studio-hero.webp",
     "nav": "Key Studio",
     "title": "Key Studio",
     "tag": {"ja": "Chrome / Edge · USB", "en": "Chrome / Edge · USB"},

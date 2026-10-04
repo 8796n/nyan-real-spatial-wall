@@ -107,7 +107,9 @@ def render(source: Path, layout: Template, products: list[dict], css_version: st
 	meta_html = "\n".join(f'  <meta {attr}="{name}" content="{escape(value)}">' for attr, name, value in og)
 
 	cards = "\n".join(
-		f'          <a class="card" href="{href(product_home(p))}"><span class="tag">{escape(p["tag"][lang])}</span>'
+		f'          <a class="card" href="{href(product_home(p))}">'
+		+ (f'<img class="product-card-image" src="{escape(href(p["image"]))}" width="1200" height="630" loading="lazy" alt="">' if p.get("image") else "")
+		+ f'<span class="tag">{escape(p["tag"][lang])}</span>'
 		f'<h3>{escape(p["title"])}</h3><p>{escape(p["summary"][lang])}</p></a>'
 		for p in products
 	)
