@@ -1,0 +1,58 @@
+name: Key Studio 不具合・サポート / Bug report & support
+description: Key Studioの不具合・使い方・動作確認を報告します / Ask about Key Studio or report device compatibility
+title: "[Key Studio] "
+labels:
+  - support
+body:
+  - type: markdown
+    attributes:
+      value: |
+        [Key Studioのサポートページ](https://support.nyanreal.jp/key-studio/)もご確認ください。
+        投稿にはGitHubアカウントが必要です。問い合わせ内容と添付画像は公開されます。設定した文字列など、公開したくない情報は含めないでください。
+        Please check the [Key Studio support page](https://support.nyanreal.jp/key-studio/en/) first.
+        A GitHub account is required. Reports and attachments are public; do not include private information, such as text stored in your key assignments.
+  - type: dropdown
+    id: category
+    attributes:
+      label: 問い合わせの種類 / Type of report
+      options:
+        - 不具合 / Bug report
+        - 使い方の質問 / Usage question
+        - 機器の動作報告 / Device compatibility report
+        - 機能の要望 / Feature request
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 機種名 / Device model
+      description: 分かればVID・PIDも記入してください。未接続の場合は「未接続」または「DEMO」と書いてください / Include VID and PID if known; use “Not connected” or “DEMO” when applicable
+      placeholder: "例 / Example: SANWA 400-SKB075"
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: ファームウェア / Firmware
+      description: 接続時に表示されるバージョン。分からない場合は空欄で構いません / Version shown after connection; leave blank if unknown
+      placeholder: "例 / Example: V3.3"
+  - type: input
+    id: environment
+    attributes:
+      label: OS・ブラウザー / OS and browser
+      description: OSとブラウザーの名前・バージョンを記入してください / Include OS and browser names and versions
+      placeholder: "例 / Example: Windows 11 / Chrome 141"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 問い合わせ内容 / Details
+      description: 不具合の場合は、期待した結果・実際の結果・再現手順を書いてください。エラーが表示された場合は、その文面も記入してください / For bugs, include expected and actual results, steps to reproduce, and any error message
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 画像・補足 / Screenshots and additional information
+      description: 必要な場合だけ添付してください。設定内容や文字列に個人情報が含まれていないことを確認してください / Attach only when useful and check that assignments and stored text contain no private information

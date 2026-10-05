@@ -69,8 +69,8 @@
       "en": "Configure keyboard and foot switch assignments in your browser over USB."
     },
     "footer": {
-      "ja": [["Key Studioを開く", "https://key.nyanreal.jp/"]],
-      "en": [["Open Key Studio", "https://key.nyanreal.jp/"]]
+      "ja": [["Key Studioを開く", "https://key.nyanreal.jp/"], ["問い合わせ", "https://github.com/8796n/nyan-real-support/issues/new?template=key-studio.yml"]],
+      "en": [["Open Key Studio", "https://key.nyanreal.jp/"], ["Get support", "https://github.com/8796n/nyan-real-support/issues/new?template=key-studio.yml"]]
     }
   }
 ]

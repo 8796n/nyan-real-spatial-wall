@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Key Studio サポート / Support
+    url: https://support.nyanreal.jp/key-studio/
+    about: 使い方と対応機器はこちら / See usage instructions and supported devices
   - name: Spatial Wall ユーザーマニュアル / User manual
     url: https://support.nyanreal.jp/spatial-wall/manual/ja/
     about: まず「困ったとき」を確認してください / Check troubleshooting first

@@ -9,6 +9,14 @@ nyan Real製品の公式サポートサイトです。
 - [VR Bridge](https://support.nyanreal.jp/vr-bridge/)（開発中）
 - [Key Studio](https://support.nyanreal.jp/key-studio/)（ブラウザー用設定ツール）
 
+## Key Studio
+
+- [日本語のサポートページ](https://support.nyanreal.jp/key-studio/)
+- [English support page](https://support.nyanreal.jp/key-studio/en/)
+- [不具合・問い合わせ / Bug reports and support](https://github.com/8796n/nyan-real-support/issues/new?template=key-studio.yml)
+
+機種名、分かればファームウェア、OSとブラウザー、症状や再現手順を記入してください。GitHubアカウントが必要です。投稿内容は公開されます。
+
 ## VR Bridge
 
 **nyan Real / VR Bridge** は、対応メガネをSteamVR用のヘッドセットとして使うWindows向けソフトウェアです。現在開発中で、無料の試験版を準備しています。
