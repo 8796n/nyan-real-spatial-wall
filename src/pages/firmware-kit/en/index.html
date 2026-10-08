@@ -1,0 +1,34 @@
+title: Firmware Kit | nyan Real Support
+description: nyan Real Firmware Kit modifies official firmware locally for XREAL Air-family glasses and peripherals. Find supported devices, usage instructions and introduction articles.
+alt: firmware-kit/
+---
+  <main class="article">
+    <a class="back" href="../../en/">← All products</a>
+    <p class="eyebrow">nyan Real / Firmware Kit</p>
+    <h1>Firmware Kit</h1>
+    <p class="lead">Build verified, modified images locally from official firmware for display glasses and peripherals. The kit includes display and audio changes for use with Spatial Wall and peripheral compatibility fixes. It can also be used independently.</p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/8796n/nyan-real-firmware-kit/blob/main/README.en.md">Setup and usage</a>
+      <a class="button" href="https://github.com/8796n/nyan-real-firmware-kit/issues">Bug reports and hardware results</a>
+    </div>
+
+    <h2>Introduction articles</h2>
+    <ul>
+      <li><a href="https://blog.8796.jp/8796kanri/2026/08/xreal-air%E3%82%92%E5%BE%B9%E5%BA%95%E7%9A%84%E3%81%AB%E6%94%B9%E9%80%A0%E3%81%97%E3%81%9F%E8%A9%B1.html">A deep dive into modifying XREAL Air (Japanese)</a></li>
+      <li><a href="https://blog.8796.jp/8796kanri/2026/08/xreal-air-2-air-2-pro%e3%82%92%e5%be%b9%e5%ba%95%e7%9a%84%e3%81%ab%e6%94%b9%e9%80%a0%e3%81%97%e3%80%81air%e3%82%82rgb%e5%8c%96%e3%81%97%e3%81%9f%e8%a9%b1.html">Modifying XREAL Air 2 / Air 2 Pro and bringing RGB to Air (Japanese)</a></li>
+    </ul>
+
+    <h2>Supported devices and requirements</h2>
+    <ul>
+      <li>XREAL Air (gen 1) / Air 2 / Air 2 Pro: native RGB output, 720p input, Full-SBS at 90 Hz and automatic DP audio without USB data. First-generation Air also supports 1920×1200 output.</li>
+      <li>MOKIN UC6101B docks: compatibility fixes for Nintendo Switch 2. The builder generates an image only; it does not flash the dock.</li>
+    </ul>
+    <p>Requires Python 3.10 or later. Image builders run on Windows, macOS and Linux. Hardware flashing has been verified on Windows. See the README for model-specific instructions and verification scope.</p>
+
+    <h2>Before using the kit</h2>
+    <div class="callout warning">
+      <p>This is an unofficial project with no manufacturer affiliation. A failed firmware write can leave your device unable to boot. Understand the risks and read the README warnings before using the kit.</p>
+      <p>Neither official nor modified firmware is distributed, and instructions for obtaining official files are not provided. Keep a separate copy of your official files for recovery.</p>
+      <p>Do not flash first-generation XREAL Air if you use it with Nebula on Beam Pro: this build prevents it from proceeding past the startup screen. RGB output increases power consumption and is expected to increase heat.</p>
+    </div>
+  </main>

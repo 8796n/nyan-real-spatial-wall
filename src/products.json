@@ -49,6 +49,17 @@
     "repo": "https://github.com/8796n/nyan-real-vdd"
   },
   {
+    "key": "firmware-kit",
+    "nav": "Firmware Kit",
+    "title": "Firmware Kit",
+    "tag": {"ja": "XREAL Air系 · 周辺機器", "en": "XREAL Air family · Peripherals"},
+    "summary": {
+      "ja": "メガネ型ディスプレイや周辺機器の公式ファームウェアを、手元で検証付きイメージへ改修するツール。",
+      "en": "Build verified, modified images locally from official firmware for display glasses and peripherals."
+    },
+    "repo": "https://github.com/8796n/nyan-real-firmware-kit"
+  },
+  {
     "key": "vr-bridge",
     "nav": "VR Bridge",
     "title": "VR Bridge",

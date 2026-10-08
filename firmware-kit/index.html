@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 生成物: tools/build_pages.py が src/pages/firmware-kit/index.html から生成する。直接編集しないこと。 -->
+  <title>Firmware Kit | nyan Real サポート</title>
+  <meta name="description" content="nyan Real Firmware Kitは、XREAL Air系メガネや周辺機器の公式ファームウェアを手元で改修するツールです。対応機器、利用手順、紹介記事をご案内します。">
+  <meta property="og:title" content="Firmware Kit | nyan Real サポート">
+  <meta property="og:description" content="nyan Real Firmware Kitは、XREAL Air系メガネや周辺機器の公式ファームウェアを手元で改修するツールです。対応機器、利用手順、紹介記事をご案内します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://support.nyanreal.jp/firmware-kit/">
+  <link rel="icon" href="../assets/app-icon.png">
+  <link rel="stylesheet" href="../assets/site.css?v=a47ea31ef2">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="shell nav" aria-label="メインナビゲーション">
+      <a class="brand" href="../" aria-label="nyan Real サポートトップ"><img src="../assets/app-icon.png" alt=""><span>nyan Real Support</span></a>
+      <div class="nav-links">
+        <a href="../">トップ</a>
+        <a href="../spatial-wall/">Spatial Wall</a>
+        <a href="../media-player/">Media Player</a>
+        <a href="../vdd/">VDD</a>
+        <a href="./" aria-current="page">Firmware Kit</a>
+        <a href="../vr-bridge/">VR Bridge</a>
+        <a href="../key-studio/">Key Studio</a>
+      </div>
+      <a class="language" href="en/" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main class="article">
+    <a class="back" href="../">← 製品一覧へ</a>
+    <p class="eyebrow">nyan Real / Firmware Kit</p>
+    <h1>Firmware Kit</h1>
+    <p class="lead">メガネ型ディスプレイや周辺機器の公式ファームウェアを、手元で検証付きイメージへ改修するツールです。Spatial&nbsp;Wallでの利用に向けた表示・音声の改修や、周辺機器の互換性修正を収録し、単体でも利用できます。</p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/8796n/nyan-real-firmware-kit/blob/main/README.md">導入・利用手順</a>
+      <a class="button" href="https://github.com/8796n/nyan-real-firmware-kit/issues">不具合・動作報告</a>
+    </div>
+
+    <h2>紹介記事</h2>
+    <ul>
+      <li><a href="https://blog.8796.jp/8796kanri/2026/08/xreal-air%E3%82%92%E5%BE%B9%E5%BA%95%E7%9A%84%E3%81%AB%E6%94%B9%E9%80%A0%E3%81%97%E3%81%9F%E8%A9%B1.html">XREAL Airを徹底的に改造した話</a></li>
+      <li><a href="https://blog.8796.jp/8796kanri/2026/08/xreal-air-2-air-2-pro%e3%82%92%e5%be%b9%e5%ba%95%e7%9a%84%e3%81%ab%e6%94%b9%e9%80%a0%e3%81%97%e3%80%81air%e3%82%82rgb%e5%8c%96%e3%81%97%e3%81%9f%e8%a9%b1.html">XREAL Air 2 / Air 2 Proを徹底的に改造し、AirもRGB化した話</a></li>
+    </ul>
+
+    <h2>対応機器と利用環境</h2>
+    <ul>
+      <li>XREAL Air（第1世代）/ Air 2 / Air 2 Pro：native RGB表示、720p入力、Full-SBS 90 Hz、USBデータがない接続での自動DP音声などに対応します。第1世代Airでは1920×1200表示も利用できます。</li>
+      <li>MOKIN UC6101B搭載ドック：Nintendo Switch 2との互換性修正を収録します。イメージの生成のみで、書き込み機能は含みません。</li>
+    </ul>
+    <p>Python 3.10以降を使用します。イメージの生成はWindows / macOS / Linuxに対応し、実機への書き込みを検証したOSはWindowsです。機種ごとの手順と検証範囲はREADMEを確認してください。</p>
+
+    <h2>利用前の確認</h2>
+    <div class="callout warning">
+      <p>メーカーとは関係のない非公式な改修です。書き換えに失敗すると機器が起動しなくなる可能性があります。リスクを理解し、READMEの注意事項を確認してから利用してください。</p>
+      <p>公式・改修済みのファームウェアは配布せず、公式ファイルの入手方法も案内しません。手元の公式ファイルは復旧用に別の場所にも保管してください。</p>
+      <p>XREAL Air（第1世代）をBeam ProのNebulaで使う場合は書き換えないでください。このビルドでは起動画面から先へ進まなくなります。RGB化により消費電力が増え、発熱も増えると想定されます。</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <a class="footer-brand" href="../">nyan Real Support</a>
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="../">サポートトップ</a>
+        <a href="https://github.com/8796n/nyan-real-firmware-kit">GitHub</a>
+      </nav>
+    </div>
+    <div class="shell footer-meta"><p>© 2026 8796n · nyan Real</p></div>
+  </footer>
+</body>
+</html>
